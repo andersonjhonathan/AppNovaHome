@@ -1,6 +1,5 @@
 
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
-import { Colors } from 'react-native/Libraries/NewAppScreen'
 import { useFonts } from 'expo-font'
 import AppLoading from 'expo-app-loading'
 import { AntDesign } from '@expo/vector-icons'

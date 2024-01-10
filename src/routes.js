@@ -2,7 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import { Home } from './pages/home'
 import { Register } from './pages/register'
 import { Login } from './pages/login'
-
+import { Image } from 'react-native'
 
 const Nav = createStackNavigator();
 
@@ -23,6 +23,10 @@ export function Routes(){
               options={{
                 headerShown: true,
                 title: '' ,
+                headerTitle: (props) => <Image 
+                  style={{width: 60, height: 40, marginLeft: 92}}
+                  source={require('./assets/logo_icon.png')}
+                /> ,
                 headerStyle: {
                     backgroundColor: '#0046FE'
                 },
@@ -36,7 +40,11 @@ export function Routes(){
               component={Login}
               options={{
                 headerShown: true,
-                title: '' ,
+                title: '',
+                headerTitle: (props) => <Image 
+                  style={{width: 60, height: 40, marginLeft: 92}}
+                  source={require('./assets/logo_icon.png')}
+                /> ,
                 headerStyle: {
                     backgroundColor: '#0046FE'
                 },
