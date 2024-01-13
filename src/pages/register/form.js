@@ -4,6 +4,7 @@ import ValidationRegister from './validationRegister'
 import Password from './password'
 import RegisterUser from './registerUser'
 import StepIndicator from 'react-native-step-indicator'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 
 const {width, height} = Dimensions.get("window")
@@ -51,11 +52,7 @@ export default function Form(){
     })
 
     const [screen, setScreen] = useState(0)
-    const FormTitle = [
-        "Pag 1",
-        "Pag 2",
-        "Pag 3"
-    ]
+
     const ScreenDisplay = () => {
         if (screen === 0){
             return <RegisterUser/>
@@ -70,16 +67,16 @@ export default function Form(){
 
     const nextStep = () => {
         setCurrentPosition(currentPosition + 1)
+        setScreen((currentPosition) => currentPosition + 1)
     }
 
     const returnStep = () => {
         setCurrentPosition(currentPosition - 1)
+        setScreen((currentPosition) => currentPosition - 1)
     }
 
     return (
-        <View>
-            <Text>{FormTitle[screen]}</Text>
-            
+        <SafeAreaView>
             <View style={styles.titleContainer}>
                 <Text style={styles.textCadastro}>Cadastro</Text>
                 <View style={styles.indicator}>
@@ -97,18 +94,20 @@ export default function Form(){
             <TouchableOpacity style={styles.btnNext} onPress={() => nextStep()}>
                <Text style={styles.btnText}>Próxima</Text>
             </TouchableOpacity>
-
-            <Image
-               source={require("../../assets/baseboard_white.png")}
-               style={styles.baseboard}
-            />
+            <View>
+              <Image
+                 source={require("../../assets/baseboard_white.png")}
+                 style={styles.baseboard}
+              />
+            </View>
+            
  
-        </View>
+        </SafeAreaView>
     )
 }
 
 const styles = StyleSheet.create({
-    btnNext:{
+      btnNext:{
       backgroundColor: '#CED4DA',
       width: '90%',
       height: 45,
@@ -142,6 +141,7 @@ const styles = StyleSheet.create({
     baseboard:{
       width: 392,
       height: 80,
-      marginTop: 275
+      marginTop: 300
       }, 
+      
 })

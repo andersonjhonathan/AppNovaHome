@@ -1,26 +1,72 @@
-import { View, Text, StyleSheet, TextInput, Image } from 'react-native'
+import { View, Text, StyleSheet, Image} from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { AntDesign } from '@expo/vector-icons'
+import { FloatingLabelInput } from 'react-native-floating-label-input'
+
+
+
 
 export function Login(){
     return(
         <View style={styles.container}>
         <Text style={styles.textLogin}>Login</Text>
-            
-          <TextInput
-              placeholder="Insira seu e-mail"
-              style={styles.inputEmail}
-          />
+        <View style={styles.inputFloating}>
+          <FloatingLabelInput
+          label="E-mail"
+          staticLabel
+          hintTextColor={'#717d93'}
+          hint="Insira seu e-mail"
+          containerStyles={styles.inputEmail}
 
-          <TextInput
-              placeholder="Insira sua senha"
-              style={styles.inputSenha}
-          />
+          customLabelStyles={{
+            colorBlurred: '#0046FE',
+            fontSizeFocused: 12,
+          }}
+
+          labelStyles={{
+            backgroundColor: '#F4f4f4',
+            marginHorizontal: -10,
+            marginVertical: -11,
+            padding: 5,
+          }}
+          inputStyles={{
+            color: 'black',
+            paddingHorizontal: 5,
+          }}
+        />
+
+        <FloatingLabelInput
+          label="Senha"
+          staticLabel
+          hintTextColor={'#717d93'}
+          hint="Insira sua senha"
+          containerStyles={styles.inputEmail}
+
+          customLabelStyles={{
+            colorBlurred: '#0046FE',
+            fontSizeFocused: 12,
+          }}
+
+          labelStyles={{
+            backgroundColor: '#F4f4f4',
+            marginHorizontal: -10,
+            marginVertical: -11,
+            padding: 5,
+          }}
+          inputStyles={{
+            color: 'black',
+            paddingHorizontal: 5,
+          }}
+        />
+
+
+        </View>    
+        
           <TouchableOpacity>
             <Text style={{color: "#0046FE",
                           fontFamily:'Montserrat',
-                          marginRight: 220,
-                          marginTop: -5,
+                          marginRight: 215,
+                          marginTop:77,
                           marginBottom: 55,
                           }}>Esqueceu a senha?</Text>
           </TouchableOpacity>
@@ -52,36 +98,26 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        position: 'absolute'
        },
         inputEmail:{
-            borderColor: "#D0D5DD",
-            borderRadius: 7,
-            borderWidth: 1,
-            width: "90%",
-            height: 45,
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: 10,
-            marginBottom: 20,
-       },
-       inputSenha:{
         borderColor: "#D0D5DD",
         borderRadius: 7,
-        borderWidth: 1,
+        borderWidth: 2,
         width: "90%",
         height: 45,
         alignItems: 'center',
         justifyContent: 'center',
         padding: 10,
-        marginBottom: 10,
-        },
+        marginBottom: 26,
+       },
        textLogin:{
-            marginRight: 290,
-            marginTop: 27,
-            marginBottom: 20,
-            fontSize: 20,
-            color: "#0046FE",
-            fontFamily: 'Montserrat'
+        marginRight: 290,
+        marginTop: 27,
+        marginBottom: 20,
+        fontSize: 20,
+        color: "#0046FE",
+        fontFamily: 'Montserrat'
        },
        btnAutentic:{
         borderColor: '#0046FE',
@@ -101,7 +137,7 @@ const styles = StyleSheet.create({
        baseboard:{
         width: 392,
         height: 80,
-        marginTop: 270
+        marginTop: 255
       }, 
       buttonEnter:{
         backgroundColor: "#0046FE",
@@ -118,4 +154,11 @@ const styles = StyleSheet.create({
         fontFamily: 'Montserrat',
         paddingRight: 135 
       },
+      inputFloating:{
+        padding: 10,
+        backgroundColor: "#F4F4F4",
+        marginTop: 2,
+        width: 373,
+        height: 55,
+      }
 })
