@@ -4,8 +4,6 @@ import { AntDesign } from '@expo/vector-icons'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
 
 
-
-
 export function Login(){
     return(
         <View style={styles.container}>

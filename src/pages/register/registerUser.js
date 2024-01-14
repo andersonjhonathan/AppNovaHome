@@ -1,13 +1,13 @@
 import { View, Text, StyleSheet, TextInput} from 'react-native'
 import { Checkbox } from 'react-native-paper'
-import React from 'react'
+import React, {useState} from 'react'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
 
 export default function RegisterUser(){
 
-const [checked, setCkecked ] = React.useState(false)
-const [cpf, setCPF] = React.useState('')
-const [name, setName] = React.useState('')
+const [checked, setCkecked ] = useState(false)
+const [cpf, setCPF] = useState('')
+const [name, setName] = useState('')
 
     return(
             <View style={styles.container}>

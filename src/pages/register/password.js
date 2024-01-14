@@ -1,5 +1,5 @@
 import {View, Text, StyleSheet, Linking} from 'react-native'
-import React from 'react'
+import React, {useState} from 'react'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
 import { Checkbox } from 'react-native-paper'
 
@@ -7,14 +7,18 @@ import { Checkbox } from 'react-native-paper'
 
 export default function Password(){
 
-const [checked, setCkecked ] = React.useState(false)
-const [checkedSecond, setCkeckedSecond ] = React.useState(false)
+const [checked, setCkecked ] = useState(false)
+const [checkedSecond, setCkeckedSecond ] = useState(false)
+const [password, setPassword] = useState('')
+const [cpassword, setCpassword] = useState('')
+
     return(
         <View style={styles.container}>
             <View style={styles.inputFloating}>
                 <FloatingLabelInput
                     label="Senha"
                     staticLabel
+                    value={password}
                     hintTextColor={'#717d93'}
                     hint="Insira uma senha"
                     containerStyles={styles.inputPassword}
@@ -34,10 +38,14 @@ const [checkedSecond, setCkeckedSecond ] = React.useState(false)
                     color: 'black',
                     paddingHorizontal: 5,
                     }}
+                    onChangeText={value => {
+                        setPassword(value)
+                      }}
                     />
 
                     <FloatingLabelInput
                     label="Confirme sua senha"
+                    value={cpassword}
                     staticLabel
                     hintTextColor={'#717d93'}
                     hint="Confirme sua senha"
@@ -58,6 +66,9 @@ const [checkedSecond, setCkeckedSecond ] = React.useState(false)
                     color: 'black',
                     paddingHorizontal: 5,
                     }}
+                    onChangeText={value => {
+                        setCpassword(value)
+                      }}
                     />
                 </View>
 

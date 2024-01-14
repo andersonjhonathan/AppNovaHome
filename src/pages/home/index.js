@@ -14,6 +14,10 @@ export function Home({ navigation }){
         navigation.navigate('login')
     }
 
+    function openQuestions(){
+      navigation.navigate('questions')
+    }
+
   const [ fontsLoaded ] = useFonts({
     'Montserrat': require('../../assets/fonts/Montserrat/Montserrat.ttf')
   })
@@ -42,7 +46,7 @@ export function Home({ navigation }){
         <Text style={styles.buttonText2}>Entrar</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.buttonDoubt}>
+      <TouchableOpacity style={styles.buttonDoubt} onPress={openQuestions}>
         <AntDesign style={{backgroundColor:"#FFF", borderRadius: 15, marginRight:30}} size={30} color="#0046FE" name="question"/>
         <Text style={styles.buttonDou}>Dúvidas</Text>
       </TouchableOpacity>

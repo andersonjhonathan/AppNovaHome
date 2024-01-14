@@ -94,12 +94,6 @@ export default function Form(){
             <TouchableOpacity style={styles.btnNext} onPress={() => nextStep()}>
                <Text style={styles.btnText}>Próxima</Text>
             </TouchableOpacity>
-            <View>
-              <Image
-                 source={require("../../assets/baseboard_white.png")}
-                 style={styles.baseboard}
-              />
-            </View>
             
  
         </SafeAreaView>
@@ -128,7 +122,7 @@ const styles = StyleSheet.create({
     titleContainer:{
       flexDirection: 'row',
       marginTop: 35,
-      marginBottom: -8,
+      marginBottom: -40,
       marginLeft: 21,
         
       },
@@ -137,11 +131,5 @@ const styles = StyleSheet.create({
       fontSize: 20,
       color: "#0046FE",
       fontFamily: 'Montserrat'
-      },
-    baseboard:{
-      width: 392,
-      height: 80,
-      marginTop: 300
-      }, 
-      
+      }
 })

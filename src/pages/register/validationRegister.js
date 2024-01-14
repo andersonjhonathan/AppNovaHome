@@ -1,18 +1,23 @@
 import { View, Text, StyleSheet} from 'react-native'
-import React from 'react'
+import React, {useState} from 'react'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
 import { RadioButton } from 'react-native-paper'
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function ValidationRegister() {
 
-const [checked, setChecked] = React.useState('first');
+const [checked, setChecked] = useState('first');
+const [phone, setPhone] = useState('')
+const [email, setEmail] = useState('')
+const [cemail, setCemail] = useState('')
 
     return(
         <View style={styles.container}>
             <View style={styles.inputFloating}>
                 <FloatingLabelInput
                     label="Celular"
+                    value={phone}
+                    mask="(99) 99999-9999"
                     staticLabel
                     hintTextColor={'#717d93'}
                     hint="Insira seu número"
@@ -33,10 +38,14 @@ const [checked, setChecked] = React.useState('first');
                     color: 'black',
                     paddingHorizontal: 5,
                     }}
+                    onChangeText={value => {
+                      setPhone(value)
+                    }}
                     />
 
                     <FloatingLabelInput
                     label="E-mail"
+                    value={email}
                     staticLabel
                     hintTextColor={'#717d93'}
                     hint="Insira seu e-mail"
@@ -57,10 +66,14 @@ const [checked, setChecked] = React.useState('first');
                     color: 'black',
                     paddingHorizontal: 5,
                     }}
+                    onChangeText={value => {
+                      setEmail(value)
+                    }}
                     />
 
                     <FloatingLabelInput
                     label="Confirmar e-mail"
+                    value={cemail}
                     staticLabel
                     hintTextColor={'#717d93'}
                     hint="Insira novamente seu e-mail"
@@ -80,6 +93,9 @@ const [checked, setChecked] = React.useState('first');
                     inputStyles={{
                     color: 'black',
                     paddingHorizontal: 5,
+                    }}
+                    onChangeText={value => {
+                      setCemail(value)
                     }}
                     />
             </View>
