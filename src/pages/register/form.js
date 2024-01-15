@@ -1,11 +1,11 @@
-import {View, Text, Pressable, StyleSheet, TouchableOpacity, Dimensions, Image} from 'react-native'
+import {View, Text, Pressable, StyleSheet, TouchableOpacity, Dimensions, Modal} from 'react-native'
 import React, {useState} from 'react'
 import ValidationRegister from './validationRegister'
 import Password from './password'
 import RegisterUser from './registerUser'
 import StepIndicator from 'react-native-step-indicator'
 import { SafeAreaView } from 'react-native-safe-area-context'
-
+import { ModalSendVerification } from './modalSendVerification'
 
 const {width, height} = Dimensions.get("window")
 
@@ -50,6 +50,8 @@ export default function Form(){
         password:"",
         cpassword:"",
     })
+    
+    const [modalVisible, setModalVisible] = useState(false);
 
     const [screen, setScreen] = useState(0)
 
@@ -68,6 +70,10 @@ export default function Form(){
     const nextStep = () => {
         setCurrentPosition(currentPosition + 1)
         setScreen((currentPosition) => currentPosition + 1)
+        if(currentPosition === 2){
+          return setModalVisible(true)
+        }
+        
     }
 
     const returnStep = () => {
@@ -94,8 +100,11 @@ export default function Form(){
             <TouchableOpacity style={styles.btnNext} onPress={() => nextStep()}>
                <Text style={styles.btnText}>Próxima</Text>
             </TouchableOpacity>
-            
- 
+
+            <Modal visible={modalVisible} animationType='fade' transparent={true}>
+              <ModalSendVerification handleClose={ () => setModalVisible(false) } />
+            </Modal>
+
         </SafeAreaView>
     )
 }
