@@ -4,9 +4,14 @@ import { AntDesign } from '@expo/vector-icons'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
 
 
-export function Login(){
+export function Login( {navigation} ){
+
+    function openForgotPassword(){
+    navigation.navigate('forgotPassword')
+    }
+
     return(
-        <View style={styles.container}>
+      <View style={styles.container}>
         <Text style={styles.textLogin}>Login</Text>
         <View style={styles.inputFloating}>
           <FloatingLabelInput
@@ -56,19 +61,11 @@ export function Login(){
             paddingHorizontal: 5,
           }}
         />
-
-
         </View>    
         
-          <TouchableOpacity>
-            <Text style={{color: "#0046FE",
-                          fontFamily:'Montserrat',
-                          marginRight: 215,
-                          marginTop:77,
-                          marginBottom: 55,
-                          }}>Esqueceu a senha?</Text>
+          <TouchableOpacity style={styles.btnForgotPassword} onPress={openForgotPassword}>
+            <Text style={styles.forgotPassword}>Esqueceu a senha?</Text>
           </TouchableOpacity>
-          
 
           <TouchableOpacity style={styles.buttonEnter}>
             <AntDesign style={{ marginRight:10}} size={18} color="#FFF" name="login"/>
@@ -158,5 +155,14 @@ const styles = StyleSheet.create({
         marginTop: 2,
         width: 373,
         height: 55,
+      },
+      forgotPassword:{
+        color: "#0046FE",
+        fontFamily: 'Montserrat',
+      },
+      btnForgotPassword:{
+        marginRight: 215,
+        marginTop: 77,
+        marginBottom: 55,
       }
 })
