@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image} from 'react-native'
+import { View, Text, StyleSheet, Image, Linking} from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { AntDesign } from '@expo/vector-icons'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
@@ -9,6 +9,10 @@ export function Login( {navigation} ){
     function openForgotPassword(){
     navigation.navigate('forgotPassword')
     }
+
+    function openMainScreen(){
+      navigation.navigate('mainScreen')
+      }
 
     return(
       <View style={styles.container}>
@@ -63,11 +67,11 @@ export function Login( {navigation} ){
         />
         </View>    
         
-          <TouchableOpacity style={styles.btnForgotPassword} onPress={openForgotPassword}>
-            <Text style={styles.forgotPassword}>Esqueceu a senha?</Text>
-          </TouchableOpacity>
+          
+          <Text style={styles.forgotPassword} onPress={openForgotPassword}>Esqueceu a senha?</Text>
+          
 
-          <TouchableOpacity style={styles.buttonEnter}>
+          <TouchableOpacity style={styles.buttonEnter} onPress={openMainScreen}>
             <AntDesign style={{ marginRight:10}} size={18} color="#FFF" name="login"/>
             <Text style={styles.buttonText2}>Entrar</Text>
           </TouchableOpacity>
@@ -132,7 +136,7 @@ const styles = StyleSheet.create({
        baseboard:{
         width: 392,
         height: 80,
-        marginTop: 255
+        marginTop: 254
       }, 
       buttonEnter:{
         backgroundColor: "#0046FE",
@@ -159,10 +163,8 @@ const styles = StyleSheet.create({
       forgotPassword:{
         color: "#0046FE",
         fontFamily: 'Montserrat',
-      },
-      btnForgotPassword:{
         marginRight: 215,
-        marginTop: 77,
+        marginTop: 76,
         marginBottom: 55,
-      }
+      },
 })

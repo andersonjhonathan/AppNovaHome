@@ -5,6 +5,7 @@ import { Login } from './pages/login'
 import { Image } from 'react-native'
 import { Questions } from './pages/questions'
 import { ForgotPassword } from './pages/forgotPassword'
+import { MainScreen } from './pages/main'
 
 const Nav = createStackNavigator();
 
@@ -81,6 +82,19 @@ export function Routes(){
                   style={{width: 60, height: 40, marginLeft: 92}}
                   source={require('./assets/logo_icon.png')}
                 /> ,
+                headerStyle: {
+                    backgroundColor: '#0046FE'
+                },
+                headerTintColor: '#FFF'
+              }}
+            />
+
+            <Nav.Screen
+              name="mainScreen"
+              component={MainScreen}
+              options={{
+                headerShown: false,
+                title: '',
                 headerStyle: {
                     backgroundColor: '#0046FE'
                 },
