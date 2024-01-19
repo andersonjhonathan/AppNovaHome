@@ -37,11 +37,19 @@ export function MainScreen(){
             <Text style={styles.txtSubtitle}>Qual serviço você quer usar hoje?</Text>
 
             <TouchableOpacity style={styles.btnCompartilhada}>
-                <Text>OMO Lavanderia {'\n'}Compartilhada</Text>
+                <Image
+                    source={require("../../assets/buildingIcon.png")}
+                    style={styles.buildingIcon}
+                />
+                <Text style={styles.txtCompartilhada}>OMO Lavanderia {'\n'}Compartilhada</Text>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.btnSelfService}>
-                <Text>Self-Service</Text>
+                <Image
+                    source={require("../../assets/washerIcon.png")}
+                    style={styles.washerIcon}
+                />
+                <Text style={styles.txtSelf}>Self-Service</Text>
             </TouchableOpacity>
         </View>
     )    
@@ -77,18 +85,53 @@ const styles = StyleSheet.create({
         
     },
     btnCompartilhada:{
-        padding: 20,
+        padding: 25,
         backgroundColor: '#0046FE',
         marginLeft: 15,
         marginRight: 15,
         borderRadius: 8,
+        flexDirection: 'row',
+        alignItems: 'center',
     },
     btnSelfService:{
-        padding: 20,
+        padding: 25,
         backgroundColor: '#0046FE',
         marginLeft: 15,
         marginRight: 15,
-        marginTop: 10,
+        marginTop: 15,
         borderRadius: 8,
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    txtCompartilhada:{
+        color: '#FFF',
+        fontSize: 20,
+        fontFamily: 'Montserrat'
+        
+    },
+    txtSelf:{
+        color: '#FFF',
+        fontSize: 20,
+        fontFamily: 'Montserrat'
+    },
+    txtSubtitle:{
+        fontSize: 18,
+        paddingTop: 25,
+        paddingBottom: 15,
+        paddingLeft: 16,
+        fontFamily: 'Montserrat'
+    },
+    buildingIcon:{
+        width: 45,
+        height: 45,
+        marginRight: 15,
+        
+    },
+    washerIcon:{
+        width: 30,
+        height: 38,
+        marginRight: 15,
+        
+        
     }
 })
