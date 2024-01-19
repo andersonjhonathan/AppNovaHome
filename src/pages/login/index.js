@@ -4,9 +4,18 @@ import { AntDesign } from '@expo/vector-icons'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
 
 
-export function Login(){
+export function Login( {navigation} ){
+
+    function openForgotPassword(){
+    navigation.navigate('forgotPassword')
+    }
+
+    function openMainScreen(){
+      navigation.navigate('mainScreen')
+      }
+
     return(
-        <View style={styles.container}>
+      <View style={styles.container}>
         <Text style={styles.textLogin}>Login</Text>
         <View style={styles.inputFloating}>
           <FloatingLabelInput
@@ -56,21 +65,13 @@ export function Login(){
             paddingHorizontal: 5,
           }}
         />
-
-
         </View>    
         
-          <TouchableOpacity>
-            <Text style={{color: "#0046FE",
-                          fontFamily:'Montserrat',
-                          marginRight: 215,
-                          marginTop:77,
-                          marginBottom: 55,
-                          }}>Esqueceu a senha?</Text>
-          </TouchableOpacity>
+          
+          <Text style={styles.forgotPassword} onPress={openForgotPassword}>Esqueceu a senha?</Text>
           
 
-          <TouchableOpacity style={styles.buttonEnter}>
+          <TouchableOpacity style={styles.buttonEnter} onPress={openMainScreen}>
             <AntDesign style={{ marginRight:10}} size={18} color="#FFF" name="login"/>
             <Text style={styles.buttonText2}>Entrar</Text>
           </TouchableOpacity>
@@ -135,7 +136,7 @@ const styles = StyleSheet.create({
        baseboard:{
         width: 392,
         height: 80,
-        marginTop: 255
+        marginTop: 254
       }, 
       buttonEnter:{
         backgroundColor: "#0046FE",
@@ -158,5 +159,12 @@ const styles = StyleSheet.create({
         marginTop: 2,
         width: 373,
         height: 55,
-      }
+      },
+      forgotPassword:{
+        color: "#0046FE",
+        fontFamily: 'Montserrat',
+        marginRight: 215,
+        marginTop: 76,
+        marginBottom: 55,
+      },
 })

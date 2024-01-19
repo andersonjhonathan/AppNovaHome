@@ -3,8 +3,6 @@ import React, {useState} from 'react'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
 import { Checkbox } from 'react-native-paper'
 
-
-
 export default function Password(){
 
 const [checked, setCkecked ] = useState(false)
