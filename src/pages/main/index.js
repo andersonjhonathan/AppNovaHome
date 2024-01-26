@@ -1,5 +1,7 @@
 import {View, Text, StyleSheet, SafeAreaView, Image, TouchableOpacity} from 'react-native'
 import ListHorizontal from '../../components/ListHorizontal/index'
+import { MyTabs } from '../../bottomTabs'
+
 
 const slides = [
     {
@@ -19,8 +21,16 @@ const slides = [
     },
 ]
 
-export function MainScreen(){
+export function MainScreen( {navigation} ){
+
+    function openSelfService(){
+        navigation.navigate('selfService')
+        }
+
     return(
+
+
+
         <View style={styles.container}>
             <SafeAreaView style={styles.header}>
                 <Text style={styles.headerText}>Olá, Maria!</Text>
@@ -44,14 +54,19 @@ export function MainScreen(){
                 <Text style={styles.txtCompartilhada}>OMO Lavanderia {'\n'}Compartilhada</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.btnSelfService}>
+            <TouchableOpacity style={styles.btnSelfService} onPress={openSelfService}>
                 <Image
                     source={require("../../assets/washerIcon.png")}
                     style={styles.washerIcon}
                 />
                 <Text style={styles.txtSelf}>Self-Service</Text>
             </TouchableOpacity>
+
+            
+               
+            
         </View>
+        
     )    
 }
   
