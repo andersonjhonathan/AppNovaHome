@@ -56,6 +56,8 @@ const styles = StyleSheet.create({
         marginRight: 244,
         fontSize:16,
         color:"#0046fe"
+
+
     },
 
     btnRegister:{
@@ -84,6 +86,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         alignItems: 'center',
         justifyContent: 'center'
+        
     }, 
     txtTermo:{
         color: "#0046FE",
@@ -103,9 +106,12 @@ const styles = StyleSheet.create({
         marginTop:8,
         alignItems:"center",
         flexDirection:'row-reverse'
+    
     }, 
     txtFale:{
         color:"#ffffff",
+        
+
     },
 
     buttons:{
@@ -115,8 +121,19 @@ const styles = StyleSheet.create({
         width: '90%',
         marginBottom: 25,
     },
+    IconRegister:{
+        
+        
+
+        
+       
+
+    },
     IconFale:{
         transform:[{rotate:'-45deg'}],
-        marginLeft:2,  
+        marginLeft:2,
+
+        
+        
     }
 })
