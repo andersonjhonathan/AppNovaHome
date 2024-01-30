@@ -85,12 +85,12 @@ const lojas = [
     },
     {
         key: '3',
-        title: 'Nome da loja',
+        title: 'Niteroí | RJ',
         image: require('../../assets/maq_icon.png')
     },
     {
         key: '4',
-        title: 'Nome da loja',
+        title: 'Belo Horizonte | MG',
         image: require('../../assets/maq_icon.png')
     },
     {
@@ -168,8 +168,9 @@ const styles = StyleSheet.create({
     price: {
         color: '#01B1EC',
         fontWeight: 'bold',
-        marginLeft: 140,
+        marginLeft: 'auto',
         marginTop: 15,
+        paddingLeft: 100,
     },
     txtTitle: {
         fontSize: 16,

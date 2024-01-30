@@ -7,7 +7,7 @@ import { Questions } from './pages/questions'
 import { ForgotPassword } from './pages/forgotPassword'
 import { MainScreen } from './pages/main/index'
 import { SelfService } from './pages/selfService/index'
-import { UserLav } from './pages/selfService/userLav'
+import { MyDrawer } from './drawerRoutes'
 
 const Nav = createStackNavigator();
 
@@ -123,9 +123,9 @@ export function Routes(){
 
             <Nav.Screen
               name="userLav"
-              component={UserLav}
+              component={MyDrawer}
               options={{
-                headerShown: true,
+                headerShown: false,
                 title: '',
                 headerTitle: (props) => <Image 
                   style={{width: 68, height: 48, marginLeft: 92}}
@@ -139,6 +139,5 @@ export function Routes(){
             />
 
         </Nav.Navigator>
-  
     )
 }
