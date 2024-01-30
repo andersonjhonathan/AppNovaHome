@@ -1,9 +1,46 @@
-import { View, Text, StyleSheet, StatusBar, Image, TextInput } from 'react-native'
+import { View, Text, StyleSheet, StatusBar, Image, TextInput, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { useState, useEffect } from 'react'
 import { FlatList, ScrollView } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-export function SelfService() {
+export function SelfService( {navigation} ) {
+
+    const [searchText, setSearchText] = useState('')
+    const [list, setList] = useState(lojas)
+
+    //Criação da função "Search" em FlatList
+    useEffect(()=>{
+        if(searchText === '') {
+            setList(lojas);
+        } else {
+            setList(
+                lojas.filter(item => {
+                    if(item.title.indexOf(searchText) > -1) {
+                        return true
+                    } else { 
+                        return false
+                    }
+                })
+            )
+        }
+    }, [searchText])
+
+    const Item = ({ title }) => (
+        <TouchableOpacity onPress={openUserLav}>
+            <View style={styles.item}>
+              <Image source={require("../../assets/maq_icon.png")} style={styles.iconMaq} />
+              <Text style={styles.subtitle}>Endereço da loja</Text>
+              <Text style={styles.title}>{title}</Text>
+              <Text style={styles.price}>R$ 0,00</Text>
+            </View>
+        </TouchableOpacity>
+    );
+
+    function openUserLav(){
+        navigation.navigate('userLav')
+        }
+
     return (
         <SafeAreaView>
             <StatusBar backgroundColor="#01B1EC" barStyle='light-content' />
@@ -11,13 +48,18 @@ export function SelfService() {
             <Text style={styles.txtTitle}>Encontre a lavanderia mais próxima de você</Text>
             <View style={styles.btnSearch}>
                 <Image source={require("../../assets/search_icon.png")} style={styles.iconSearch} />
-                <TextInput style={styles.txtSearch} placeholder='Digite um endereço' />
+                <TextInput 
+                    style={styles.txtSearch} 
+                    placeholder='Digite um endereço' 
+                    value={searchText}
+                    onChangeText={(t) => setSearchText(t)}
+                    />
             </View>
 
             <ScrollView style={styles.scrollView} horizontal={true}>
             <View style={styles.containerList}>
                 <FlatList
-                    data={lojas}
+                    data={list}
                     renderItem={({ item }) =>
                         <Item title={item.title} />
                     }
@@ -27,27 +69,18 @@ export function SelfService() {
             </View>
             </ScrollView>
         </SafeAreaView>
-    )
+    )  
 }
-
-const Item = ({ title }) => (
-    <View style={styles.item}>
-        <Image source={require("../../assets/maq_icon.png")} style={styles.iconMaq} />
-        <Text style={styles.subtitle}>Endereço da loja</Text>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.price}>R$ 0,00</Text>
-    </View>
-);
 
 const lojas = [
     {
         key: '1',
-        title: 'Nome da loja',
+        title: 'Porto Alegre | RS',
         image: require('../../assets/maq_icon.png')
     },
     {
         key: '2',
-        title: 'Nome da loja',
+        title: 'B. da Tijuca | RJ',
         image: require('../../assets/maq_icon.png')
     },
     {

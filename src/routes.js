@@ -7,6 +7,7 @@ import { Questions } from './pages/questions'
 import { ForgotPassword } from './pages/forgotPassword'
 import { MainScreen } from './pages/main/index'
 import { SelfService } from './pages/selfService/index'
+import { UserLav } from './pages/selfService/userLav'
 
 const Nav = createStackNavigator();
 
@@ -106,6 +107,23 @@ export function Routes(){
             <Nav.Screen
               name="selfService"
               component={SelfService}
+              options={{
+                headerShown: true,
+                title: '',
+                headerTitle: (props) => <Image 
+                  style={{width: 68, height: 48, marginLeft: 92}}
+                  source={require('./assets/logo_icon2.png')}
+                /> ,
+                headerStyle: {
+                    backgroundColor: '#F5F8FF'
+                },
+                headerTintColor: '#343A40',
+              }}
+            />
+
+            <Nav.Screen
+              name="userLav"
+              component={UserLav}
               options={{
                 headerShown: true,
                 title: '',
