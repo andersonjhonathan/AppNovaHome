@@ -1,6 +1,7 @@
-import { View, StyleSheet, Text, TouchableOpacity, Image } from 'react-native'
+import { View, StyleSheet, Text, TouchableOpacity, Image, Button} from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
-import { UserLav } from './userLav'
+import { BarCodeScanner } from 'expo-barcode-scanner'
+import React, { useEffect, useState } from 'react'
 
 export function QrCode( {navigation} ){
 
@@ -8,8 +9,32 @@ export function QrCode( {navigation} ){
         navigation.navigate('userLav')
         }
 
+    const[hasPermission, setHasPermission] = useState(false)
+    const[scanData, setScanData] = useState()
+
+    useEffect(() => {
+        (async() => {
+            const {status} = await BarCodeScanner.requestPermissionsAsync()
+            setHasPermission(status === "granted")
+        })()
+    }, [])
+
+    if(!hasPermission){
+        return(
+            <View>
+                <Text>Conceda permissões de câmera ao aplicativo</Text>
+            </View>
+        )
+    }
+
+    const handleBarCodeScanned = ({type, data}) => {
+        setScanData(data)
+        console.log(`Data: ${data}`)
+        console.log(`Type: ${type}`)
+    } 
+
     return(
-        <View>
+        <View style={styles.container}>
             <View style={styles.containerTxt}>
                 <View style={styles.btnTitle}>
                     <Text style={styles.txtTitle}>Ativar máquina</Text>
@@ -20,14 +45,20 @@ export function QrCode( {navigation} ){
                 
                 <Text style={styles.txtSubtitle}>Aponte a câmera para o QR Code que {'\n'}está na máquina</Text>
             </View>
-
-            <View>
-                    <Image
-                          source={require("../../assets/get_qrcode.png")}
-                          style={styles.iconGetQrCode}
-                        />
-            </View>
             
+            <View style={styles.barcodebox}>
+                <BarCodeScanner
+                    // style={StyleSheet.absoluteFillObject}
+                    style={{height: 400, width: 400}}
+                    onBarCodeScanned={scanData ? undefined : handleBarCodeScanned}
+                />
+                {scanData && <Button title='Digitalize novamente' onPress={() => setScanData(undefined)}/>}
+                
+            </View>
+            <Image
+                source={require("../../assets/get_qrcode.png")}
+                style={styles.iconGetQrCode}
+            />
 
             <TouchableOpacity style={styles.btnCodQrCode}>
                 <Text style={styles.txtCod}>Digitar código do QR Code</Text>
@@ -54,11 +85,13 @@ const styles = StyleSheet.create({
     txtSubtitle:{
         textAlign: 'center',
         padding: 15,
-
+        marginBottom: 50,
+        fontFamily: 'Montserrat'
     },
     btnCodQrCode:{
         backgroundColor:'#01B1EC',
         height: 75,
+        width: '100%',
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: 145,
@@ -68,12 +101,28 @@ const styles = StyleSheet.create({
         fontSize: 18,
     },
     iconGetQrCode:{
+        position: 'absolute',
         width: 320,
         height: 320,
-        margin: 35,
+        marginTop: 230,
+        paddingTop: 30,
     },
     btnTitle:{
         flexDirection: 'row',
         alignItems: 'center'
+    },
+    barcodebox:{
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: 290,
+        width: 290,
+        overflow: 'hidden',
+        borderRadius: 8,
+    },
+    container:{
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'space-between'
     }
+    
 })
