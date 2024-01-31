@@ -8,6 +8,8 @@ import { ForgotPassword } from './pages/forgotPassword'
 import { MainScreen } from './pages/main/index'
 import { SelfService } from './pages/selfService/index'
 import { MyDrawer } from './drawerRoutes'
+import { BottomTabs } from './bottomTabs'
+import { QrCode } from './pages/selfService/qrcode'
 
 const Nav = createStackNavigator();
 
@@ -124,6 +126,23 @@ export function Routes(){
             <Nav.Screen
               name="userLav"
               component={MyDrawer}
+              options={{
+                headerShown: false,
+                title: '',
+                headerTitle: (props) => <Image 
+                  style={{width: 68, height: 48, marginLeft: 92}}
+                  source={require('./assets/logo_icon2.png')}
+                /> ,
+                headerStyle: {
+                    backgroundColor: '#F5F8FF'
+                },
+                headerTintColor: '#343A40',
+              }}
+            />
+
+            <Nav.Screen
+              name="qrCode"
+              component={QrCode}
               options={{
                 headerShown: false,
                 title: '',

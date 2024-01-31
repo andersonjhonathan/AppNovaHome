@@ -2,6 +2,8 @@ import React from 'react'
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { UserLav } from './pages/selfService/userLav';
 import { Image } from 'react-native'
+import { SelfService } from './pages/selfService'
+
 
 const Drawer = createDrawerNavigator();
 
@@ -10,6 +12,7 @@ export function MyDrawer() {
     <Drawer.Navigator>
       <Drawer.Screen name="Home" component={UserLav} 
       options={{
+        drawerLabel: 'Olá, Maria' ,
         headerShown: true,
         title: '',
         headerTitle: (props) => <Image 
@@ -21,6 +24,27 @@ export function MyDrawer() {
         },
         headerTintColor: '#FFFFFF',
       }}
+      />
+      <Drawer.Screen name="Mudar de loja" component={SelfService}
+      
+      />
+
+      <Drawer.Screen name="Meus cartões" component={SelfService}
+      
+      />
+
+      <Drawer.Screen name="Recarga" component={SelfService}
+      
+      />
+
+      <Drawer.Screen name="Extrato de consumo" component={SelfService}
+      
+      />
+      <Drawer.Screen name="Ajuda" component={SelfService}
+      
+      />
+      <Drawer.Screen name="Voltar para home" component={SelfService}
+      
       />
       
     </Drawer.Navigator>

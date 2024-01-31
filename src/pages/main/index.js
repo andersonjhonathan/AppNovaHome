@@ -1,6 +1,5 @@
 import {View, Text, StyleSheet, SafeAreaView, Image, TouchableOpacity} from 'react-native'
 import ListHorizontal from '../../components/ListHorizontal/index'
-// import { MyTabs } from '../../bottomTabs'
 
 
 const slides = [
@@ -61,10 +60,7 @@ export function MainScreen( {navigation} ){
                 />
                 <Text style={styles.txtSelf}>Self-Service</Text>
             </TouchableOpacity>
-
-            
-               
-            
+ 
         </View>
         
     )    

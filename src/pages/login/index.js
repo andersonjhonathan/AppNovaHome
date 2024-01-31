@@ -48,6 +48,7 @@ export function Login( {navigation} ){
           hintTextColor={'#717d93'}
           hint="Insira sua senha"
           containerStyles={styles.inputEmail}
+          // secureTextInput={true}
 
           customLabelStyles={{
             colorBlurred: '#0046FE',
