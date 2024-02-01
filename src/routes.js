@@ -95,7 +95,7 @@ export function Routes(){
 
             <Nav.Screen
               name="mainScreen"
-              component={MainScreen}
+              component={BottomTabs}
               options={{
                 headerShown: false,
                 title: '',

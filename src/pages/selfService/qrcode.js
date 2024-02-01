@@ -1,13 +1,21 @@
-import { View, StyleSheet, Text, TouchableOpacity, Image, Button} from 'react-native'
+import { View, StyleSheet, Text, TouchableOpacity, Image, Button, Modal} from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { BarCodeScanner } from 'expo-barcode-scanner'
 import React, { useEffect, useState } from 'react'
+import { ModalCodMaq } from './modalCodMaq'
 
 export function QrCode( {navigation} ){
 
     function closeQrCode(){
         navigation.navigate('userLav')
         }
+
+    function OpenCodMaq(){
+        setModalVisible(true)
+        }
+
+    const [modalVisible, setModalVisible] = useState(false);
+    
 
     const[hasPermission, setHasPermission] = useState(false)
     const[scanData, setScanData] = useState()
@@ -33,6 +41,7 @@ export function QrCode( {navigation} ){
         console.log(`Type: ${type}`)
     } 
 
+    
     return(
         <View style={styles.container}>
             <View style={styles.containerTxt}>
@@ -59,12 +68,14 @@ export function QrCode( {navigation} ){
                 source={require("../../assets/get_qrcode.png")}
                 style={styles.iconGetQrCode}
             />
-
-            <TouchableOpacity style={styles.btnCodQrCode}>
+            
+            <TouchableOpacity style={styles.btnCodQrCode} onPress={OpenCodMaq}>
                 <Text style={styles.txtCod}>Digitar código do QR Code</Text>
             </TouchableOpacity>
            
-            
+            <Modal visible={modalVisible} animationType='fade' transparent={true}>
+              <ModalCodMaq handleClose={ () => setModalVisible(false) } />
+            </Modal>
         </View>
     )
 }
