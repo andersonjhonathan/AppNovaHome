@@ -146,7 +146,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginLeft: -130,
         fontSize: 16,
-
     },
     subtitle: {
         paddingTop: 20,

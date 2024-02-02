@@ -1,4 +1,5 @@
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native'
+import { useFonts, Montserrat_400Regular } from '@expo-google-fonts/montserrat'
 import { AntDesign } from '@expo/vector-icons'
 import { FlatList, ScrollView } from 'react-native-gesture-handler'
 import { Ionicons } from '@expo/vector-icons'
@@ -11,6 +12,14 @@ export function UserLav ( {navigation} ){
         }
     
     const[hideValor, setHideValor] = useState(true)
+
+    const [fontsLoaded] = useFonts({
+        Montserrat_400Regular,
+      })
+  
+      if (!fontsLoaded){
+        return null
+      }
 
     return (
         <View>
@@ -41,7 +50,7 @@ export function UserLav ( {navigation} ){
                     </View>
 
                     <TouchableOpacity style={styles.btnSaldo}>
-                        <Text style={styles.btnTxt}>Adicionar Saldo</Text>
+                        <Text style={styles.btnTxt}>Adicionar saldo</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -183,7 +192,7 @@ const styles = StyleSheet.create({
     valorSaldo:{
         color: '#FFFFFF',
         fontSize: 20,
-        fontFamily: 'Montserrat'
+        fontFamily: 'Montserrat_400Regular'
     },
     iconMaqOff:{
         width: 50,
@@ -231,13 +240,13 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     lavText:{
-        fontFamily: 'Montserrat',
+        fontFamily: 'Montserrat_400Regular',
         fontSize: 16,
         paddingRight: 10,
         paddingBottom: 8,
     },
     secText:{
-        fontFamily: 'Montserrat',
+        fontFamily: 'Montserrat_400Regular',
         fontSize: 16,
         paddingRight: 10,
         paddingBottom: 8,

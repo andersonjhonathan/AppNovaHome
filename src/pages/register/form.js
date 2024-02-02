@@ -1,4 +1,5 @@
 import {View, Text, Pressable, StyleSheet, TouchableOpacity, Dimensions, Modal} from 'react-native'
+import { useFonts, Montserrat_400Regular, Montserrat_500Medium } from '@expo-google-fonts/montserrat'
 import React, {useState} from 'react'
 import ValidationRegister from './validationRegister'
 import Password from './password'
@@ -81,6 +82,15 @@ export default function Form(){
         setScreen((currentPosition) => currentPosition - 1)
     }
 
+    const [fontsLoaded] = useFonts({
+      Montserrat_400Regular,
+      Montserrat_500Medium
+    })
+
+    if (!fontsLoaded){
+      return null
+    }
+
     return (
         <SafeAreaView>
             <View style={styles.titleContainer}>
@@ -122,7 +132,7 @@ const styles = StyleSheet.create({
     },
       btnText:{
       color: "#FFF",
-      fontFamily: "Montserrat"
+      fontFamily: "Montserrat_400Regular"
     },
     indicator:{
       height: height - 700,
@@ -139,6 +149,6 @@ const styles = StyleSheet.create({
       marginRight: -10,
       fontSize: 20,
       color: "#0046FE",
-      fontFamily: 'Montserrat'
+      fontFamily: 'Montserrat_500Medium'
       }
 })

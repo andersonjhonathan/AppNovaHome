@@ -12,6 +12,8 @@ export function BottomTabs() {
       
       <Tab.Navigator
         barStyle={{ backgroundColor: '#0046FE'}}
+        activeColor="#f0edf6"
+        inactiveColor="#f0edf6"
       >
           <Tab.Screen 
             name="Início" 

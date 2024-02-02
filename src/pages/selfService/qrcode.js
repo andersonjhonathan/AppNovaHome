@@ -96,8 +96,7 @@ const styles = StyleSheet.create({
     txtSubtitle:{
         textAlign: 'center',
         padding: 15,
-        marginBottom: 50,
-        fontFamily: 'Montserrat'
+        marginBottom: 50
     },
     btnCodQrCode:{
         backgroundColor:'#01B1EC',

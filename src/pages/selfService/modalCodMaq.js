@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
     txtMensage:{
         color: "#343A40",
         fontSize: 14,
-        fontFamily: 'Montserrat',
         marginTop: 15,
         marginBottom: 10,
         textAlign:'center'
@@ -53,7 +52,6 @@ const styles = StyleSheet.create({
     txtCodDesb:{
         color: "#002F6E",
         fontSize: 20,
-        fontFamily: 'Montserrat',
         fontWeight: 'bold' 
     },
     btnReturnCam:{
@@ -63,7 +61,6 @@ const styles = StyleSheet.create({
     },
     textButton: {
         color: '#343A40',
-        fontFamily: 'Montserrat',
         fontWeight: 'bold',
         fontSize: 18,
     },
@@ -97,5 +94,3 @@ const styles = StyleSheet.create({
         fontSize: 18,
     }
 })
-
-//marginRight: 10}} size={18} color="#FFF" name="mail

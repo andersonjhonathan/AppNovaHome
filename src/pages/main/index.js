@@ -1,5 +1,6 @@
 import {View, Text, StyleSheet, SafeAreaView, Image, TouchableOpacity} from 'react-native'
 import ListHorizontal from '../../components/ListHorizontal/index'
+import { useFonts, Montserrat_400Regular, Montserrat_600SemiBold, Montserrat_500Medium } from '@expo-google-fonts/montserrat'
 
 
 const slides = [
@@ -25,6 +26,16 @@ export function MainScreen( {navigation} ){
     function openSelfService(){
         navigation.navigate('selfService')
         }
+
+        const [fontsLoaded] = useFonts({
+            Montserrat_400Regular,
+            Montserrat_600SemiBold,
+            Montserrat_500Medium
+          })
+      
+          if (!fontsLoaded){
+            return null
+          }
 
     return(
 
@@ -85,7 +96,7 @@ const styles = StyleSheet.create({
     headerText:{
         color: '#FFF',
         fontSize: 20,
-        fontFamily: 'Montserrat',
+        fontFamily: 'Montserrat_500Medium',
         paddingTop: 15,
     },
     logoIcon:{
@@ -117,20 +128,20 @@ const styles = StyleSheet.create({
     txtCompartilhada:{
         color: '#FFF',
         fontSize: 20,
-        fontFamily: 'Montserrat'
+        fontFamily: 'Montserrat_400Regular'
         
     },
     txtSelf:{
         color: '#FFF',
         fontSize: 20,
-        fontFamily: 'Montserrat'
+        fontFamily: 'Montserrat_400Regular'
     },
     txtSubtitle:{
         fontSize: 18,
         paddingTop: 25,
         paddingBottom: 15,
         paddingLeft: 16,
-        fontFamily: 'Montserrat'
+        fontFamily: 'Montserrat_400Regular'
     },
     buildingIcon:{
         width: 45,

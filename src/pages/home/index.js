@@ -1,8 +1,7 @@
-
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
-import { useFonts } from 'expo-font'
-import AppLoading from 'expo-app-loading'
-import { AntDesign } from '@expo/vector-icons'
+import { useFonts, Montserrat_400Regular, Montserrat_600SemiBold } from '@expo-google-fonts/montserrat'
+import { AntDesign, Ionicons } from '@expo/vector-icons'
+
 
 export function Home({ navigation }){
 
@@ -18,13 +17,14 @@ export function Home({ navigation }){
       navigation.navigate('questions')
     }
 
-  const [ fontsLoaded ] = useFonts({
-    'Montserrat': require('../../assets/fonts/Montserrat/Montserrat.ttf')
-  })
+    const [fontsLoaded] = useFonts({
+      Montserrat_400Regular,
+      Montserrat_600SemiBold
+    })
 
-  if(!fontsLoaded){
-    <AppLoading/>
-  }
+    if (!fontsLoaded){
+      return null
+    }
 
   return(
     <View style={styles.container}>
@@ -42,7 +42,7 @@ export function Home({ navigation }){
       </TouchableOpacity>
 
       <TouchableOpacity style={styles.buttonEnter} onPress={openLogin}>
-        <AntDesign style={{ marginRight:10 }} size={18} color="#FFF" name="login"/>
+        <Ionicons style={{ marginRight:10 }} size={26} color="#FFF" name="log-in-outline"/>
         <Text style={styles.buttonText2}>Entrar</Text>
       </TouchableOpacity>
 
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     marginBottom: 25,
     fontSize: 18,
     justifyContent: 'center',
-    fontFamily: 'Montserrat'
+    fontFamily: 'Montserrat_400Regular'
   },
   buttonRegister:{
     backgroundColor: "#F5F8FF",
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   },
   buttonText:{
     color: "#0046FE",
-    fontFamily: 'Montserrat'
+    fontFamily: 'Montserrat_400Regular'
   },
   buttonEnter:{
     borderColor: "#FFFFFF",
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   },
   buttonText2:{
     color: "#FFFFFF",
-    fontFamily: 'Montserrat'
+    fontFamily: 'Montserrat_400Regular'
   },
 
   buttonDoubt:{
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     marginRight: 30,
     marginLeft: -14,
     fontSize: 15,
-    fontFamily: 'Montserrat'
+    fontFamily: 'Montserrat_400Regular'
   }
 
 })

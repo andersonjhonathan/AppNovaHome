@@ -2,12 +2,23 @@ import { View, Text, StyleSheet, TextInput} from 'react-native'
 import { Checkbox } from 'react-native-paper'
 import React, {useState} from 'react'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
+import { useFonts, Montserrat_400Regular, Montserrat_500Medium } from '@expo-google-fonts/montserrat'
 
 export default function RegisterUser(){
 
 const [checked, setCkecked ] = useState(false)
 const [cpf, setCPF] = useState('')
 const [name, setName] = useState('')
+
+const [fontsLoaded] = useFonts({
+  Montserrat_400Regular,
+  Montserrat_500Medium
+})
+
+if (!fontsLoaded){
+  return null
+}
+
 
     return(
             <View style={styles.container}>
@@ -23,7 +34,7 @@ const [name, setName] = useState('')
 
                     customLabelStyles={{
                     colorBlurred: '#0046FE',
-                    fontSizeFocused: 12,
+                    fontSizeFocused: 12
                     }}
 
                     labelStyles={{
@@ -103,7 +114,7 @@ const styles = StyleSheet.create({
   },
   checkText:{
     color: '#717D96',
-    fontFamily: 'Montserrat'
+    fontFamily: 'Montserrat_400Regular'
   },
   inputName:{
     borderColor: "#D0D5DD",

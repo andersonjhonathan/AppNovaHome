@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
 import { RadioButton } from 'react-native-paper'
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useFonts, Montserrat_400Regular, Montserrat_500Medium } from '@expo-google-fonts/montserrat'
 
 export default function ValidationRegister() {
 
@@ -10,6 +11,16 @@ const [checked, setChecked] = useState('first');
 const [phone, setPhone] = useState('')
 const [email, setEmail] = useState('')
 const [cemail, setCemail] = useState('')
+
+const [fontsLoaded] = useFonts({
+  Montserrat_400Regular,
+  Montserrat_500Medium
+})
+
+if (!fontsLoaded){
+  return null
+}
+
 
     return(
         <View style={styles.container}>
@@ -161,12 +172,14 @@ const styles = StyleSheet.create({
         marginTop: 70,
         marginRight: 245,
         fontSize: 15,
-        fontFamily: 'Montserrat'
+        fontFamily: 'Montserrat_500Medium'
       },
       txtSend:{
         color: "#0046FE",
         marginTop: 10,
         marginRight: 14,
+        fontSize: 12.5,
+        fontFamily: 'Montserrat_400Regular'
       },
       checkContainer:{
         justifyContent: 'center',
@@ -177,7 +190,8 @@ const styles = StyleSheet.create({
       },
       txtCheck:{
         color: '#717D96',
-        fontSize: 17,
+        fontSize: 15,
+        fontFamily: 'Montserrat_500Medium'
       },
       checkFirst:{
         flexDirection: 'row',

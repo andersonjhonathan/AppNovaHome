@@ -2,12 +2,22 @@ import { View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
 import React, { useState } from 'react'
 import { AntDesign } from '@expo/vector-icons'
+import { useFonts, Montserrat_400Regular, Montserrat_600SemiBold } from '@expo-google-fonts/montserrat'
 
 export function ForgotPassword(){
 
     const [phone, setPhone] = useState('')
 
     const disabled = false
+
+    const [fontsLoaded] = useFonts({
+      Montserrat_400Regular,
+      Montserrat_600SemiBold
+    })
+
+    if (!fontsLoaded){
+      return null
+    }
 
     return(
         <View style={styles.container}>
@@ -106,14 +116,14 @@ const styles = StyleSheet.create({
       },
       txtCod:{
         color: '#FFF',
-        fontFamily: 'Montserrat',
+        fontFamily: 'Montserrat_400Regular',
       },
       txtForgotPassword:{
         color: '#0046FE',
         fontSize: 21,
         paddingRight: 210,
         paddingTop: 25,
-        fontFamily: 'Montserrat'
+        fontFamily: 'Montserrat_400Regular'
       },
       txtSubtitle:{
         color: '#0046FE',
@@ -121,7 +131,7 @@ const styles = StyleSheet.create({
         paddingTop: 15,
         paddingBottom: 30,
         fontSize: 16,
-        fontFamily: 'Montserrat'
+        fontFamily: 'Montserrat_400Regular'
       },
       inputPhone:{
         borderColor: "#D0D5DD",

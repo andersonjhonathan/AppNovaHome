@@ -2,6 +2,7 @@ import {View, Text, StyleSheet, Linking} from 'react-native'
 import React, {useState} from 'react'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
 import { Checkbox } from 'react-native-paper'
+import { useFonts, Montserrat_400Regular} from '@expo-google-fonts/montserrat'
 
 export default function Password(){
 
@@ -9,6 +10,14 @@ const [checked, setCkecked ] = useState(false)
 const [checkedSecond, setCkeckedSecond ] = useState(false)
 const [password, setPassword] = useState('')
 const [cpassword, setCpassword] = useState('')
+
+const [fontsLoaded] = useFonts({
+  Montserrat_400Regular,
+})
+
+if (!fontsLoaded){
+  return null
+}
 
     return(
         <View style={styles.container}>
@@ -148,15 +157,16 @@ const styles = StyleSheet.create({
       },
       checkTextFirst:{
         color: '#717D96',
-        fontFamily: 'Montserrat',
-        fontSize: 13,
+        fontFamily: 'Montserrat_400Regular',
+        fontSize: 12.5,
       },
       checkTextSecond:{
         color: '#717D96',
         fontFamily: 'Montserrat',
-        fontSize: 13,
+        fontSize: 12.5,
         marginTop: 7,
         marginBottom: -15,
+        fontFamily: 'Montserrat_400Regular'
       },
       hyperlinkStyle:{
         color: 'blue',

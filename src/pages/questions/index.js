@@ -1,11 +1,21 @@
 import {Text, View, TouchableOpacity, StyleSheet,} from 'react-native'
 import React from 'react'
 import { AntDesign } from '@expo/vector-icons'
-
+import { useFonts, Montserrat_400Regular, Montserrat_500Medium } from '@expo-google-fonts/montserrat'
 
 
 
 export function Questions(){
+
+    const [fontsLoaded] = useFonts({
+        Montserrat_400Regular,
+        Montserrat_500Medium
+      })
+    
+      if (!fontsLoaded){
+        return null
+      }
+
     return(
         <View style={styles.container}>
 
@@ -46,9 +56,10 @@ const styles = StyleSheet.create({
     title:{
         marginTop: -385,
         marginBottom: 10,
-        marginRight: 300,
+        marginRight: 290,
         fontSize:20,
         color: "#0046fe",
+        fontFamily:'Montserrat_500Medium'
         },
 
     subtitle:{

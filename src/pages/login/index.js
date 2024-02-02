@@ -1,7 +1,8 @@
 import { View, Text, StyleSheet, Image} from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import { AntDesign } from '@expo/vector-icons'
+import { AntDesign, Ionicons } from '@expo/vector-icons'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
+import { useFonts, Montserrat_400Regular, Montserrat_600SemiBold, Montserrat_500Medium } from '@expo-google-fonts/montserrat'
 
 
 export function Login( {navigation} ){
@@ -13,6 +14,16 @@ export function Login( {navigation} ){
     function openMainScreen(){
       navigation.navigate('mainScreen')
       }
+
+    const [fontsLoaded] = useFonts({
+      Montserrat_400Regular,
+      Montserrat_600SemiBold,
+      Montserrat_500Medium
+    })
+  
+    if (!fontsLoaded){
+      return null
+    }
 
     return(
       <View style={styles.container}>
@@ -73,7 +84,7 @@ export function Login( {navigation} ){
           
 
           <TouchableOpacity style={styles.buttonEnter} onPress={openMainScreen}>
-            <AntDesign style={{ marginRight:10}} size={18} color="#FFF" name="login"/>
+            <Ionicons style={{ marginRight:10}} size={24} color="#FFF" name="log-in-outline"/>
             <Text style={styles.buttonText2}>Entrar</Text>
           </TouchableOpacity>
 
@@ -117,7 +128,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         fontSize: 20,
         color: "#0046FE",
-        fontFamily: 'Montserrat'
+        fontFamily: 'Montserrat_500Medium'
        },
        btnAutentic:{
         borderColor: '#0046FE',
@@ -132,7 +143,7 @@ const styles = StyleSheet.create({
        },
        btnText:{
         color: "#0046FE",
-        fontFamily: "Montserrat"
+        fontFamily: "Montserrat_400Regular"
        },
        baseboard:{
         width: 392,
@@ -151,7 +162,7 @@ const styles = StyleSheet.create({
       },
       buttonText2:{
         color: "#FFFFFF",
-        fontFamily: 'Montserrat',
+        fontFamily: 'Montserrat_400Regular',
         paddingRight: 135 
       },
       inputFloating:{
@@ -163,7 +174,7 @@ const styles = StyleSheet.create({
       },
       forgotPassword:{
         color: "#0046FE",
-        fontFamily: 'Montserrat',
+        fontFamily: 'Montserrat_400Regular',
         marginRight: 215,
         marginTop: 76,
         marginBottom: 55,

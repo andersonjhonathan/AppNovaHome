@@ -1,7 +1,18 @@
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { useFonts, Montserrat_400Regular, Montserrat_500Medium } from '@expo-google-fonts/montserrat'
 import { AntDesign } from '@expo/vector-icons'
 
 export function ModalSendVerification({ handleClose }){
+
+    const [fontsLoaded] = useFonts({
+        Montserrat_400Regular,
+        Montserrat_500Medium
+      })
+  
+      if (!fontsLoaded){
+        return null
+      }
+
     return (
         <View style={styles.container}>
             <View style={styles.content}>
@@ -36,14 +47,14 @@ const styles = StyleSheet.create({
     txtMensage:{
         color: "#FFF",
         fontSize: 15,
-        fontFamily: 'Montserrat',
+        fontFamily: 'Montserrat_400Regular',
         marginTop: 10,
     },
     txtSubTitle:{
         color: "#FFF",
         marginTop: 20,
         fontSize: 15,
-        fontFamily: 'Montserrat'
+        fontFamily: 'Montserrat_400Regular'
         
     },
     btnConfirm:{
@@ -60,7 +71,7 @@ const styles = StyleSheet.create({
     },
     textButton: {
         color: '#0046FE',
-        fontFamily: 'Montserrat'
+        fontFamily: 'Montserrat_400Regular'
     }
 })
 
