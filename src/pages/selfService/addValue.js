@@ -1,12 +1,25 @@
 import { View, Text, StyleSheet, TouchableOpacity, TextInput} from 'react-native'
 import { useFonts, Montserrat_400Regular } from '@expo-google-fonts/montserrat'
-import { Ionicons } from '@expo/vector-icons'
+import CurrencyInput from 'react-native-currency-input'
+import { AntDesign, Ionicons } from '@expo/vector-icons'
 import React, { useState } from 'react'
 
 export function AddValue(){
 
-    const [text, onChangeText] = useState('');
-    const [number, onChangeNumber] = useState('');
+    const [value, setValue] = useState(0)
+
+    function BtnAddValue1(){
+        setValue(15.90)
+    }
+    function BtnAddValue2(){
+        setValue(31.80)
+    }
+    function BtnAddValue3(){
+        setValue(47.70)
+    }
+    function BtnAddValue4(){
+        setValue(63.60)
+    }
 
     const[hideValor, setHideValor] = useState(true)
 
@@ -54,31 +67,37 @@ export function AddValue(){
                 <Text style={styles.txtTitle}>Digite ou escolha o valor que você {'\n'}deseja recarregar na loja selecionada.</Text>               
             </View>
             
-            
-            <TextInput 
-                
+            <View>
+            <CurrencyInput 
                 style={styles.inputValue}
-                onChangeText={onChangeText}
-                value={text}
-                keyboardType="numeric"
-                                
+                onChangeValue={setValue}
+                value={value}
+                keyboardType="numeric" 
+                delimiter="."
+                separator=","
+                precision={2}
+                minValue={0}            
             />
+            <AntDesign style={styles.iconEditValue} name='edit' color='#868E96' size={25}/>
+            <Text style={styles.txtPrefix}>R$</Text>
+            </View>
+            
 
 
             <View style={styles.buttonsValue}>
-                <TouchableOpacity style={styles.btnValue}>
+                <TouchableOpacity style={styles.btnValue} onPress={BtnAddValue1}>
                     <Text style={styles.txtValue}>R$ 15,90</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.btnValue}>
+                <TouchableOpacity style={styles.btnValue} onPress={BtnAddValue2}>
                     <Text style={styles.txtValue}>R$ 31,80</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.btnValue}>
+                <TouchableOpacity style={styles.btnValue} onPress={BtnAddValue3}>
                     <Text style={styles.txtValue}>R$ 47,70</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.btnValue}>
+                <TouchableOpacity style={styles.btnValue} onPress={BtnAddValue4}>
                     <Text style={styles.txtValue}>R$ 63,60</Text>
                 </TouchableOpacity>                
             </View>
@@ -159,10 +178,14 @@ const styles = StyleSheet.create({
         backgroundColor:'#FFFFFF',
         margin: 20,
         width: '90%',
-        height: 60,
+        height: 65,
         borderWidth: 1,
         borderColor: '#CED4DA',
         borderRadius: 5,
+        fontSize: 32,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        
     },
     buttonsValue:{
         flexDirection: 'row',
@@ -203,5 +226,17 @@ const styles = StyleSheet.create({
         fontSize: 16,
         marginLeft: 75,
         marginTop: -15,
+    },
+    txtPrefix:{
+        position:'absolute',
+        fontSize: 20,
+        fontWeight: '500',
+        marginTop: 45,
+        marginLeft: 35,
+    },
+    iconEditValue:{
+        position: 'absolute',
+        marginTop: 47,
+        marginLeft: 330,
     }
 })
