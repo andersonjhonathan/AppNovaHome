@@ -10,6 +10,9 @@ import { SelfService } from './pages/selfService/index'
 import { MyDrawer } from './drawerRoutes'
 import { BottomTabs } from './bottomTabs'
 import { QrCode } from './pages/selfService/qrcode'
+import { ConfirmMaq } from './pages/selfService/confirmMaq'
+import { AddValue } from './pages/selfService/addValue'
+import { Text } from 'react-native'
 
 const Nav = createStackNavigator();
 
@@ -141,8 +144,40 @@ export function Routes(){
             />
 
             <Nav.Screen
+              name="addValue"
+              component={AddValue}
+              options={{
+                headerShown: true,
+                title: '',
+                headerTitle: (props) => 
+                  <Text style={{marginLeft: 105, color:'#FFFFFF', fontSize:16, fontWeight: 'bold'}}>Recarga</Text>,
+                headerStyle: {
+                    backgroundColor: '#01B1EC'
+                },
+                headerTintColor: '#FFFFFF',
+              }}
+            />
+
+            <Nav.Screen
               name="qrCode"
               component={QrCode}
+              options={{
+                headerShown: false,
+                title: '',
+                headerTitle: (props) => <Image 
+                  style={{width: 68, height: 48, marginLeft: 92}}
+                  source={require('./assets/logo_icon2.png')}
+                /> ,
+                headerStyle: {
+                    backgroundColor: '#F5F8FF'
+                },
+                headerTintColor: '#343A40',
+              }}
+            />
+
+            <Nav.Screen
+              name="confirmMaq"
+              component={ConfirmMaq}
               options={{
                 headerShown: false,
                 title: '',

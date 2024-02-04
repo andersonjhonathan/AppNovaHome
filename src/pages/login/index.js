@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler'
 import { AntDesign, Ionicons } from '@expo/vector-icons'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
 import { useFonts, Montserrat_400Regular, Montserrat_600SemiBold, Montserrat_500Medium } from '@expo-google-fonts/montserrat'
-
+import React, { useState } from 'react'
 
 export function Login( {navigation} ){
 
@@ -14,6 +14,8 @@ export function Login( {navigation} ){
     function openMainScreen(){
       navigation.navigate('mainScreen')
       }
+
+    const [password, setPassword] = useState('')
 
     const [fontsLoaded] = useFonts({
       Montserrat_400Regular,
@@ -56,10 +58,11 @@ export function Login( {navigation} ){
         <FloatingLabelInput
           label="Senha"
           staticLabel
+          value={password}
           hintTextColor={'#717d93'}
           hint="Insira sua senha"
           containerStyles={styles.inputEmail}
-          // secureTextInput={true}
+          secureTextEntry
 
           customLabelStyles={{
             colorBlurred: '#0046FE',
@@ -75,6 +78,9 @@ export function Login( {navigation} ){
           inputStyles={{
             color: 'black',
             paddingHorizontal: 5,
+          }}
+          onChangeText={value => {
+            setPassword(value)
           }}
         />
         </View>    

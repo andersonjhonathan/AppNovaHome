@@ -10,6 +10,10 @@ export function UserLav ( {navigation} ){
     function openQrCode(){
         navigation.navigate('qrCode')
         }
+
+    function openAddValue(){
+        navigation.navigate('addValue')
+        }
     
     const[hideValor, setHideValor] = useState(true)
 
@@ -49,7 +53,7 @@ export function UserLav ( {navigation} ){
                         
                     </View>
 
-                    <TouchableOpacity style={styles.btnSaldo}>
+                    <TouchableOpacity style={styles.btnSaldo} onPress={openAddValue}>
                         <Text style={styles.btnTxt}>Adicionar saldo</Text>
                     </TouchableOpacity>
                 </View>
@@ -345,8 +349,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     txtBtnSaldo:{
-        flexDirection:'row',
-        
+        flexDirection:'row',  
     },
     btnIcon:{
         paddingLeft: 5,
