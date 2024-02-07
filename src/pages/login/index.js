@@ -4,8 +4,14 @@ import { AntDesign, Ionicons } from '@expo/vector-icons'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
 import { useFonts, Montserrat_400Regular, Montserrat_600SemiBold, Montserrat_500Medium } from '@expo-google-fonts/montserrat'
 import React, { useState } from 'react'
+import api from '../../services/api'
 
 export function Login( {navigation} ){
+
+    const getLogin = async () => {
+      const {data} = await api.get('/api/v1/Usuario/AtivarConta')
+        console.log(data)
+    }
 
     function openForgotPassword(){
     navigation.navigate('forgotPassword')
@@ -16,6 +22,7 @@ export function Login( {navigation} ){
       }
 
     const [password, setPassword] = useState('')
+    const [email, setEmail] = useState('')
 
     const [fontsLoaded] = useFonts({
       Montserrat_400Regular,
@@ -34,6 +41,7 @@ export function Login( {navigation} ){
           <FloatingLabelInput
           label="E-mail"
           staticLabel
+          value={email}
           hintTextColor={'#717d93'}
           hint="Insira seu e-mail"
           containerStyles={styles.inputEmail}
@@ -52,6 +60,9 @@ export function Login( {navigation} ){
           inputStyles={{
             color: 'black',
             paddingHorizontal: 5,
+          }}
+          onChangeText={value => {
+            setEmail(value)
           }}
         />
 
@@ -95,7 +106,7 @@ export function Login( {navigation} ){
           </TouchableOpacity>
 
 
-          <TouchableOpacity style={styles.btnAutentic}>
+          <TouchableOpacity style={styles.btnAutentic} onPress={getLogin}>
             <AntDesign style={{ marginRight: 10}} size={18} color="#0046FE" name="sync" />
               <Text style={styles.btnText}>Reenviar autenticação</Text>
           </TouchableOpacity>
