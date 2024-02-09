@@ -9,8 +9,13 @@ import api from '../../services/api'
 export function Login( {navigation} ){
 
     const getLogin = async () => {
-      const {data} = await api.get('/api/v1/Usuario/AtivarConta')
+      try{ 
+        const {data} = await api.get('omo-ole/v1')
         console.log(data)
+      } catch(error){
+        console.log(error)
+      }
+      
     }
 
     function openForgotPassword(){
