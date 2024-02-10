@@ -1,7 +1,8 @@
-import {View, Text, StyleSheet, SafeAreaView, Image, TouchableOpacity} from 'react-native'
+import { View, Text, StyleSheet, SafeAreaView, Image, TouchableOpacity } from 'react-native'
 import ListHorizontal from '../../components/ListHorizontal/index'
 import { useFonts, Montserrat_400Regular, Montserrat_600SemiBold, Montserrat_500Medium } from '@expo-google-fonts/montserrat'
-
+import React, { useState, useEffect } from 'react'
+import api from '../../services/api'
 
 const slides = [
     {
@@ -21,37 +22,37 @@ const slides = [
     },
 ]
 
-export function MainScreen( {navigation} ){
+export function MainScreen({ navigation }) {
 
-    function openSelfService(){
+    function openSelfService() {
         navigation.navigate('selfService')
-        }
+    }
 
-        const [fontsLoaded] = useFonts({
-            Montserrat_400Regular,
-            Montserrat_600SemiBold,
-            Montserrat_500Medium
-          })
-      
-          if (!fontsLoaded){
-            return null
-          }
+    const [fontsLoaded] = useFonts({
+        Montserrat_400Regular,
+        Montserrat_600SemiBold,
+        Montserrat_500Medium
+    })
 
-    return(
+    if (!fontsLoaded) {
+        return null
+    }
+
+    return (
 
 
 
         <View style={styles.container}>
             <SafeAreaView style={styles.header}>
-                <Text style={styles.headerText}>Olá, Maria!</Text>
+                <Text style={styles.headerText}>Olá, !</Text>
                 <Image
                     source={require("../../assets/logo_icon.png")}
                     style={styles.logoIcon}
                 />
             </SafeAreaView>
-            
+
             <View>
-                <ListHorizontal data={slides}/>
+                <ListHorizontal data={slides} />
             </View>
 
             <Text style={styles.txtSubtitle}>Qual serviço você quer usar hoje?</Text>
@@ -71,19 +72,19 @@ export function MainScreen( {navigation} ){
                 />
                 <Text style={styles.txtSelf}>Self-Service</Text>
             </TouchableOpacity>
- 
+
         </View>
-        
-    )    
+
+    )
 }
-  
+
 
 const styles = StyleSheet.create({
-    container:{
+    container: {
         flex: 1,
         backgroundColor: '#FFF'
     },
-    header:{
+    header: {
         backgroundColor: "#0046FE",
         paddingTop: 5,
         paddingBottom: 9,
@@ -91,22 +92,22 @@ const styles = StyleSheet.create({
         paddingRight: 14,
         flexDirection: 'row',
         alignItems: 'center',
-        
+
     },
-    headerText:{
+    headerText: {
         color: '#FFF',
         fontSize: 20,
         fontFamily: 'Montserrat_500Medium',
         paddingTop: 15,
     },
-    logoIcon:{
+    logoIcon: {
         width: 90,
         height: 60,
         marginLeft: 160,
         marginBottom: 5,
-        
+
     },
-    btnCompartilhada:{
+    btnCompartilhada: {
         padding: 25,
         backgroundColor: '#0046FE',
         marginLeft: 15,
@@ -115,7 +116,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
     },
-    btnSelfService:{
+    btnSelfService: {
         padding: 25,
         backgroundColor: '#0046FE',
         marginLeft: 15,
@@ -125,35 +126,35 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center'
     },
-    txtCompartilhada:{
+    txtCompartilhada: {
         color: '#FFF',
         fontSize: 20,
         fontFamily: 'Montserrat_400Regular'
-        
+
     },
-    txtSelf:{
+    txtSelf: {
         color: '#FFF',
         fontSize: 20,
         fontFamily: 'Montserrat_400Regular'
     },
-    txtSubtitle:{
+    txtSubtitle: {
         fontSize: 18,
         paddingTop: 25,
         paddingBottom: 15,
         paddingLeft: 16,
         fontFamily: 'Montserrat_400Regular'
     },
-    buildingIcon:{
+    buildingIcon: {
         width: 45,
         height: 45,
         marginRight: 15,
-        
+
     },
-    washerIcon:{
+    washerIcon: {
         width: 30,
         height: 38,
         marginRight: 15,
-        
-        
+
+
     }
 })
