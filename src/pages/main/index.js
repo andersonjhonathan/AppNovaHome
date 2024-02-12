@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, SafeAreaView, Image, TouchableOpacity } from 'r
 import ListHorizontal from '../../components/ListHorizontal/index'
 import { useFonts, Montserrat_400Regular, Montserrat_600SemiBold, Montserrat_500Medium } from '@expo-google-fonts/montserrat'
 import React, { useState, useEffect } from 'react'
-import api from '../../services/api'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const slides = [
     {
@@ -24,30 +24,19 @@ const slides = [
 
 export function MainScreen({ navigation }) {
 
-    // const [name, setName] = useState('')
+    const [name, setName] = useState('')
 
-    // const getName = async data => {
-    //     try {
-    //         const result = await api("/omo-ole/v1/login", {
-    //             method: 'post',
-    //             headers: {
-    //                 'content-Type': 'application/json',
-    //                 'ocp-apim-subscription-key': '54c3966e447e4f929aaa937ee4ace241',
-    //             },
-    //             data: data
-    //         })
-    //         setName(result)
-    //         return result
-    //     } catch (error) {
-    //         return error.response.data
-    //     }
-    //     }
+    async function getData(){
+        const response = await AsyncStorage.getItem("@App1")
+        if(response){
+          setName(response)
+          console.log(response)
+        }
+    }
 
-    // useEffect(() => {
-    //         getName()
-    //         console.log(name)
-    //         // setName(data)
-    // }, [])
+    useEffect(() => {
+        getData()
+    }, [])
 
     function openSelfService() {
         navigation.navigate('selfService')
@@ -66,7 +55,7 @@ export function MainScreen({ navigation }) {
     return (
         <View style={styles.container}>
             <SafeAreaView style={styles.header}>
-                <Text style={styles.headerText}>Olá, Andre Bejo!</Text>
+                <Text style={styles.headerText}>Olá, {name}</Text>
                 <Image
                     source={require("../../assets/logo_icon.png")}
                     style={styles.logoIcon}

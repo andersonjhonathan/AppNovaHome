@@ -1,8 +1,23 @@
 import { Text, View, StyleSheet, TouchableOpacity, SafeAreaView, Image } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { useFonts, Montserrat_400Regular, Montserrat_500Medium } from '@expo-google-fonts/montserrat'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useState, useEffect } from 'react'
 
 export function Profile(){
+
+   const [name, setName] = useState('')
+
+   async function getData(){
+       const response = await AsyncStorage.getItem("@App1")
+       if(response){
+         setName(response)
+       }
+   }
+
+   useEffect(() => {
+      getData()
+  }, [])
 
    const [fontsLoaded] = useFonts({
       Montserrat_400Regular,
@@ -28,7 +43,7 @@ export function Profile(){
          <Text style={styles.txtProfile}>Perfil</Text>
          
          
-         <Text style={styles.txtName}>Olá, Maria!</Text>
+         <Text style={styles.txtName}>Olá, {name}!</Text>
 
          <View style={styles.containerIcon}>
             <Ionicons size={24} color="#0046FE" name="call-outline"/>

@@ -1,8 +1,24 @@
 import { View , Text, StyleSheet, TouchableOpacity, SafeAreaView, Image  } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { useFonts, Montserrat_400Regular, Montserrat_500Medium } from '@expo-google-fonts/montserrat'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { useState, useEffect } from 'react'
 
 export function ExitMain( {navigation} ){
+
+    const [name, setName] = useState('')
+
+    async function getData(){
+        const response = await AsyncStorage.getItem("@App1")
+        if(response){
+          setName(response)
+          console.log(response)
+        }
+    }
+
+    useEffect(() => {
+        getData()
+    }, [])
 
     const [fontsLoaded] = useFonts({
         Montserrat_400Regular,
@@ -30,7 +46,7 @@ export function ExitMain( {navigation} ){
             </SafeAreaView>
 
             <Text style={styles.txtExit}>Sair</Text>
-            <Text style={styles.txtName}>Olá, Maria!</Text>
+            <Text style={styles.txtName}>Olá, {name}!</Text>
             <Text style={styles.txtSubtitle}>Tem certeza que quer sair da sua conta?</Text>
 
             <TouchableOpacity style={styles.btnEdit} onPress={ReturnAppDeslogado}>

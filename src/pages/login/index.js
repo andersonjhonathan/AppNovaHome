@@ -5,6 +5,7 @@ import { FloatingLabelInput } from 'react-native-floating-label-input'
 import { useFonts, Montserrat_400Regular, Montserrat_600SemiBold, Montserrat_500Medium } from '@expo-google-fonts/montserrat'
 import React, { useState } from 'react'
 import { user_login } from '../../services/user_login'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export function Login({ navigation }) {
 
@@ -49,6 +50,7 @@ export function Login({ navigation }) {
     return null
   }
 
+
   const handleLogin = () => {
     const checkPassword = checkPasswordValidity(password)
     if (!checkPassword) {
@@ -58,7 +60,11 @@ export function Login({ navigation }) {
         password: password,
       })
         .then(result => {
-          console.log(result.data.data.first_name)
+          async function getName(){
+            await AsyncStorage.setItem("@App1", nome)
+        }
+        var nome = result.data.data.first_name
+          getName()
           if (result.status == 200) {
             navigation.navigate('mainScreen')
           }
