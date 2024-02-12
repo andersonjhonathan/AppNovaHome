@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, ActivityIndicator } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { AntDesign, Ionicons } from '@expo/vector-icons'
 import { FloatingLabelInput } from 'react-native-floating-label-input'
@@ -11,6 +11,7 @@ export function Login({ navigation }) {
   const [password, setPassword] = useState('')
   const [email, setEmail] = useState('')
   const [checkValidEmail, setCheckValidEmail] = useState(false)
+  const [loading, setLoading] = useState(false)
 
   const handleCheckEmail = text => {
     let re = /\S+@\S+\.\S+/
@@ -51,12 +52,13 @@ export function Login({ navigation }) {
   const handleLogin = () => {
     const checkPassword = checkPasswordValidity(password)
     if (!checkPassword) {
+      setLoading(true)
       user_login({
         email: email.toLocaleLowerCase(),
         password: password,
       })
         .then(result => {
-          // console.log(result)
+          console.log(result.data.data.first_name)
           if (result.status == 200) {
             navigation.navigate('mainScreen')
           }
@@ -113,11 +115,11 @@ export function Login({ navigation }) {
           }}
           onChangeText={text => handleCheckEmail(text)}
         />
-        {/* {checkValidEmail ? (
+        {checkValidEmail ? (
           <Text style={styles.textFailed}>Formato de e-mail incorreto.</Text>
         ) : (
           <Text style={styles.textFailed}> </Text>
-        )} */}
+        )}
 
         <FloatingLabelInput
           label="Senha"
@@ -151,8 +153,12 @@ export function Login({ navigation }) {
 
 
       <TouchableOpacity style={styles.buttonEnter} onPress={handleLogin}>
-        <Ionicons style={{ marginRight: 10 }} size={24} color="#FFF" name="log-in-outline" />
-        <Text style={styles.buttonText2}>Entrar</Text>
+      <Text style={styles.buttonText2}>Entrar</Text>
+        {!loading ? (
+          <Ionicons style={styles.IconLoading} size={24} color="#FFF" name="log-in-outline" />
+        ) : (
+          <ActivityIndicator style={styles.IconLoading} />
+        )}
       </TouchableOpacity>
 
 
@@ -221,7 +227,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#0046FE",
     borderRadius: 5,
     borderWidth: 1,
-    width: "125%",
+    width: "131%",
     height: 50,
     alignItems: 'center',
     justifyContent: 'center',
@@ -247,10 +253,15 @@ const styles = StyleSheet.create({
     marginBottom: 55,
   },
   textFailed: {
+    marginLeft: 182,
+    marginTop: 55,
     color: 'red',
     position: 'absolute',
-    paddingTop: 55,
-    paddingLeft: 202,
+    paddingLeft: 20,
     fontSize: 12,
+  },
+  IconLoading: {
+    position: 'absolute',
+    paddingRight: 55,
   }
 })

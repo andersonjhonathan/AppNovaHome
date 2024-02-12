@@ -24,6 +24,31 @@ const slides = [
 
 export function MainScreen({ navigation }) {
 
+    // const [name, setName] = useState('')
+
+    // const getName = async data => {
+    //     try {
+    //         const result = await api("/omo-ole/v1/login", {
+    //             method: 'post',
+    //             headers: {
+    //                 'content-Type': 'application/json',
+    //                 'ocp-apim-subscription-key': '54c3966e447e4f929aaa937ee4ace241',
+    //             },
+    //             data: data
+    //         })
+    //         setName(result)
+    //         return result
+    //     } catch (error) {
+    //         return error.response.data
+    //     }
+    //     }
+
+    // useEffect(() => {
+    //         getName()
+    //         console.log(name)
+    //         // setName(data)
+    // }, [])
+
     function openSelfService() {
         navigation.navigate('selfService')
     }
@@ -39,12 +64,9 @@ export function MainScreen({ navigation }) {
     }
 
     return (
-
-
-
         <View style={styles.container}>
             <SafeAreaView style={styles.header}>
-                <Text style={styles.headerText}>Olá, !</Text>
+                <Text style={styles.headerText}>Olá, Andre Bejo!</Text>
                 <Image
                     source={require("../../assets/logo_icon.png")}
                     style={styles.logoIcon}
@@ -99,11 +121,13 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontFamily: 'Montserrat_500Medium',
         paddingTop: 15,
+        paddingBottom: 10,
     },
     logoIcon: {
+        position: 'absolute',
         width: 90,
         height: 60,
-        marginLeft: 160,
+        marginLeft: 275,
         marginBottom: 5,
 
     },
