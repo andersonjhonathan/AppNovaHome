@@ -61,10 +61,22 @@ export function Login({ navigation }) {
       })
         .then(result => {
           async function getName(){
-            await AsyncStorage.setItem("@App1", nome)
+            await AsyncStorage.setItem("@names", nome)
         }
+          async function getPhone(){
+            await AsyncStorage.setItem("@phones", phone)
+        }
+          async function getEmail(){
+            await AsyncStorage.setItem("@emails", email)
+        }
+
         var nome = result.data.data.first_name
+        var phone = result.data.data.phone
+        
           getName()
+          getPhone()
+          getEmail()
+          // console.log(result.data.data.phone)
           if (result.status == 200) {
             navigation.navigate('mainScreen')
           }

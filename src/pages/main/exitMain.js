@@ -8,16 +8,15 @@ export function ExitMain( {navigation} ){
 
     const [name, setName] = useState('')
 
-    async function getData(){
-        const response = await AsyncStorage.getItem("@App1")
+    async function getDataName(){
+        const response = await AsyncStorage.getItem("@names")
         if(response){
           setName(response)
-          console.log(response)
         }
     }
 
     useEffect(() => {
-        getData()
+        getDataName()
     }, [])
 
     const [fontsLoaded] = useFonts({
