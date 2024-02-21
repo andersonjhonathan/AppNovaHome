@@ -4,7 +4,11 @@ import CurrencyInput from 'react-native-currency-input'
 import { AntDesign, Ionicons } from '@expo/vector-icons'
 import React, { useState } from 'react'
 
-export function AddValue(){
+export function AddValue( {navigation} ){
+
+    function openPayment() {
+        navigation.navigate('payment')
+    }
 
     const [value, setValue] = useState(0)
 
@@ -107,7 +111,7 @@ export function AddValue(){
                     Valor mínimo de recarga {'\n'}R$ 1,00</Text>               
             </View>
 
-            <TouchableOpacity style={styles.btnGoPayment}>
+            <TouchableOpacity style={styles.btnGoPayment} onPress={openPayment}>
                 <Text style={styles.txtPayment}>Ir para pagamento</Text>
             </TouchableOpacity>
             
