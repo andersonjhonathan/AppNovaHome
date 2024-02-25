@@ -3,11 +3,41 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { FlatList, ScrollView } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context';
+import api from '../../services/api';
 
 export function SelfService( {navigation} ) {
 
     const [searchText, setSearchText] = useState('')
     const [list, setList] = useState(lojas)
+
+    // const [lojas, setLojas] = useState('')
+
+
+    // const user_selfService = async data => {
+
+    //     try {
+    //         const result = await api("/omo-ole/v1/loja", {
+    //             method: 'get',
+    //             headers: {
+    //                 'content-Type': 'application/json',
+    //                 'ocp-apim-subscription-key': '54c3966e447e4f929aaa937ee4ace241',
+    //                 'access-token': '0nHc7ppplF-kDIXsm9tMmQ',
+    //                 'client': 'c5YNT2RMrE85oKxKqolbHg'
+    //             },
+    //             data: data
+    //         })
+    //         setLojas(result)
+    //         return result
+    //     } catch (error) {
+    //         return error.response.data
+    //     }
+    // }
+
+    // useEffect(() => {
+    //     console.log(lojas)
+    //     user_selfService()
+    // })
+    
 
     //Criação da função "Search" em FlatList
     useEffect(()=>{
