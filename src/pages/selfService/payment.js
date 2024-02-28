@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, TouchableOpacity, TextInput} from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image} from 'react-native'
 import { useFonts, Montserrat_400Regular } from '@expo-google-fonts/montserrat'
 import { AntDesign, Ionicons } from '@expo/vector-icons'
 import React, { useState } from 'react'
@@ -6,6 +6,8 @@ import React, { useState } from 'react'
 export function Payment(){
 
     const[hideValor, setHideValor] = useState(true)
+    const[favoritar, setFavoritar] = useState(true)
+    const[favoritar1, setFavoritar1] = useState(true)
 
     const [fontsLoaded] = useFonts({
         Montserrat_400Regular,
@@ -48,6 +50,91 @@ return(
                 </View>
             </View>
             <Text style={styles.txtTitle}>Selecione a forma de pagamento</Text>
+
+            <View style={styles.card}>
+                <Ionicons name='card' color='#a7a7a7' size={33} />
+                <View style={styles.infoCard}>
+                    <Text style={styles.titleInfoCard}>Cartão de Crédito</Text>
+                    <Text style={styles.subTitleInfoCard}>**** **** **** 4321</Text>
+                </View>
+                <View style={styles.conteinerIcones}>
+                    <TouchableOpacity onPress={() => setFavoritar(!favoritar)}>
+                        {
+                            favoritar ?
+                                <Ionicons name='heart-outline' color='#a7a7a7' size={25} style={styles.icones}/>  
+                            :
+                                <Ionicons name='heart-sharp' color='#01B1EC' size={25} style={styles.icones}/>  
+                        }
+                    </TouchableOpacity>
+
+                    <TouchableOpacity> 
+                        <Ionicons name='pencil-sharp' color='#a7a7a7' size={25} style={styles.icones}/> 
+                    </TouchableOpacity>
+
+                    <TouchableOpacity> 
+                        <Ionicons name='trash-outline' color='#a7a7a7' size={25} style={styles.icones}/> 
+                    </TouchableOpacity>
+
+                </View>
+            </View>
+
+            <View style={styles.card}>
+                <Ionicons name='card' color='#a7a7a7' size={33} />
+                <View style={styles.infoCard}>
+                    <Text style={styles.titleInfoCard}>Cartão de Crédito</Text>
+                    <Text style={styles.subTitleInfoCard}>**** **** **** 4321</Text>
+                </View>
+                <View style={styles.conteinerIcones}>
+                    <TouchableOpacity onPress={() => setFavoritar1(!favoritar1)}>
+                        {
+                            favoritar1 ?
+                                <Ionicons name='heart-outline' color='#a7a7a7' size={25} style={styles.icones}/>  
+                            :
+                                <Ionicons name='heart-sharp' color='#01B1EC' size={25} style={styles.icones}/>  
+                        }
+                    </TouchableOpacity>
+                    <TouchableOpacity> 
+                        <Ionicons name='pencil-sharp' color='#a7a7a7' size={25} style={styles.icones}/> 
+                    </TouchableOpacity>
+
+                    <TouchableOpacity> 
+                        <Ionicons name='trash-outline' color='#a7a7a7' size={25} style={styles.icones}/> 
+                    </TouchableOpacity>
+
+                </View>
+            </View>
+
+            <View style={styles.card}>
+                <Ionicons name='card' color='#a7a7a7' size={33} />
+                <View style={styles.infoCard}>
+                    <Text style={styles.titleInfoCard}>Adicionar Cartão</Text>
+                </View>
+                <View style={styles.conteinerIcones}>
+                    <TouchableOpacity> 
+                        <Ionicons name='add-circle' color='#a7a7a7' size={30} style={styles.soloIcon}/> 
+                    </TouchableOpacity>
+                </View>
+            </View>
+
+            <View style={styles.card}>
+                <Image
+                    source={require('../../assets/icons8-foto-33.png')}
+                    
+                />
+        
+                <View style={styles.infoCard}>
+                    <Text style={styles.titleInfoCard}>Pix</Text>
+                    <Text style={styles.subTitleInfoCard}>Pagamento online</Text>
+                </View>
+                <View style={styles.novo}>
+                    <Text style={styles.txtNovo}>NOVO</Text>
+                </View>
+                <View style={styles.conteinerIconePix}>
+                    <TouchableOpacity> 
+                        <Ionicons name='chevron-forward' color='#a7a7a7' size={30} style={{marginLeft: 10}}/> 
+                    </TouchableOpacity>
+                </View>
+            </View>
     </View>
 )
     
@@ -58,6 +145,63 @@ const styles = StyleSheet.create({
         backgroundColor: '#01B1EC',
         borderBottomRightRadius: 18,
         borderBottomLeftRadius: 18,
+    },
+    txtNovo:{
+        color: '#FFF',
+        fontWeight: 'bold',
+    },
+    novo:{
+        marginLeft: 40,
+        backgroundColor: '#a7a7a7',
+        width: 55,
+        height: 23,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 5,
+    },
+    soloIcon:{
+        marginLeft: 60,
+    },
+    icones:{
+        marginRight: 4,
+    },
+    conteinerIcones:{
+        marginLeft: 45,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    conteinerIconePix:{
+        marginRight: 0,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    titleInfoCard:{
+        fontWeight: 'bold',
+        marginTop: 2,
+        fontSize: 15,
+        color: '#a7a7a7',
+    },
+    subTitleInfoCard:{
+        color: '#6f6f6f',
+    },
+    infoCard:{
+        marginLeft: 12,
+    },
+    card:{
+        flexDirection: 'row',
+        width: "90%",
+        height: 80, 
+        backgroundColor: '#FFF',
+        borderWidth: 1,
+        borderColor: '#d3d3d3',
+        borderRadius: 8,
+        alignItems: 'center', 
+        alignSelf: 'center',
+        paddingHorizontal: 12,
+        marginBottom: 15,
+        elevation: 1,
     },
     header:{
         flexDirection: 'row',
@@ -112,6 +256,7 @@ const styles = StyleSheet.create({
         paddingLeft: 16,
         fontSize: 20,
         color: '#002F6E',
-        fontWeight: '500'
+        fontWeight: '500',
+        marginBottom: 13,
     }
 })
