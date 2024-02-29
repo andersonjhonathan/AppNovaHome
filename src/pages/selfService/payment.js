@@ -3,7 +3,11 @@ import { useFonts, Montserrat_400Regular } from '@expo-google-fonts/montserrat'
 import { AntDesign, Ionicons } from '@expo/vector-icons'
 import React, { useState } from 'react'
 
-export function Payment(){
+export function Payment( {navigation} ){
+
+    function openPaymentPix(){
+        navigation.navigate('paymentPix')
+        }
 
     const[hideValor, setHideValor] = useState(true)
     const[favoritar, setFavoritar] = useState(true)
@@ -129,11 +133,12 @@ return(
                 <View style={styles.novo}>
                     <Text style={styles.txtNovo}>NOVO</Text>
                 </View>
-                <View style={styles.conteinerIconePix}>
-                    <TouchableOpacity> 
+                    <TouchableOpacity onPress={openPaymentPix}> 
+                    <View style={styles.conteinerIconePix}>
                         <Ionicons name='chevron-forward' color='#a7a7a7' size={30} style={{marginLeft: 10}}/> 
+                    </View>
                     </TouchableOpacity>
-                </View>
+                
             </View>
     </View>
 )

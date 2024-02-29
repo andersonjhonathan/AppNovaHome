@@ -14,6 +14,7 @@ import { ConfirmMaq } from './pages/selfService/confirmMaq'
 import { AddValue } from './pages/selfService/addValue'
 import { Text } from 'react-native'
 import { Payment } from './pages/selfService/payment'
+import { PaymentPix } from './pages/selfService/paymentPix'
 
 const Nav = createStackNavigator();
 
@@ -196,6 +197,21 @@ export function Routes() {
       <Nav.Screen
         name="payment"
         component={Payment}
+        options={{
+          headerShown: true,
+          title: '',
+          headerTitle: (props) =>
+            <Text style={{ marginLeft: 105, color: '#FFFFFF', fontSize: 16, fontWeight: 'bold' }}>Recarga</Text>,
+          headerStyle: {
+            backgroundColor: '#01B1EC'
+          },
+          headerTintColor: '#FFFFFF',
+        }}
+      />
+
+      <Nav.Screen
+        name="paymentPix"
+        component={PaymentPix}
         options={{
           headerShown: true,
           title: '',

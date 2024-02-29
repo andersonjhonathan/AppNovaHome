@@ -4,40 +4,48 @@ import { useState, useEffect } from 'react'
 import { FlatList, ScrollView } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import api from '../../services/api';
+import axios from 'axios';
+// import InfoClient from './infoClient';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 export function SelfService( {navigation} ) {
 
     const [searchText, setSearchText] = useState('')
     const [list, setList] = useState(lojas)
-
-    // const [lojas, setLojas] = useState('')
-
-
-    // const user_selfService = async data => {
-
-    //     try {
-    //         const result = await api("/omo-ole/v1/loja", {
-    //             method: 'get',
-    //             headers: {
-    //                 'content-Type': 'application/json',
-    //                 'ocp-apim-subscription-key': '54c3966e447e4f929aaa937ee4ace241',
-    //                 'access-token': '0nHc7ppplF-kDIXsm9tMmQ',
-    //                 'client': 'c5YNT2RMrE85oKxKqolbHg'
-    //             },
-    //             data: data
-    //         })
-    //         setLojas(result)
-    //         return result
-    //     } catch (error) {
-    //         return error.response.data
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     console.log(lojas)
-    //     user_selfService()
-    // })
     
+
+
+    useEffect(() => {
+        const apiURL = "https://hml-washandgo.azure-api.net//omo-ole/v1/loja";
+
+        const headers = {
+          "ocp-apim-subscription-key": "54c3966e447e4f929aaa937ee4ace241",
+          "access-token": "_149fnutZn15nazEs2Xd6A",
+          "client": "6ErPlTT-I-6ARwsZDuzpQw",
+          "uid": "olc_andre.bejo@gmail.com"
+        };
+        
+        const response = axios.get(apiURL, { headers })
+          .then(response => {
+            // Aqui você pode acessar os headers da resposta
+            console.log('Headers da resposta:', response.headers);
+            // E também os dados da resposta
+            console.log('Resultado:', response.data);
+            
+            
+          })
+          .catch(error => {
+            // Aqui você pode acessar os detalhes do erro
+            console.error('Erro:', error);
+          });
+    }, []);
+
+  
+    
+
+
+
 
     //Criação da função "Search" em FlatList
     useEffect(()=>{
@@ -58,14 +66,21 @@ export function SelfService( {navigation} ) {
 
     const Item = ({ title }) => (
         <TouchableOpacity onPress={openUserLav}>
-            <View style={styles.item}>
-              <Image source={require("../../assets/maq_icon.png")} style={styles.iconMaq} />
-              <Text style={styles.subtitle}>Endereço da loja</Text>
-              <Text style={styles.title}>{title}</Text>
-              <Text style={styles.price}>R$ 0,00</Text>
+            <View style={styles.item} >
+            <Image source={require("../../assets/maq_icon.png")} style={styles.iconMaq} />
+                <Text style={styles.subtitle} > a </Text>
+                <Text style={styles.title}>{title}</Text>
+                <Text style={styles.price}>R$ 0,00 </Text>
             </View>
         </TouchableOpacity>
     );
+            
+            
+                
+                    
+                       
+                
+
 
     function openUserLav(){
         navigation.navigate('userLav')
