@@ -21,18 +21,17 @@ export function SelfService( {navigation} ) {
 
         const headers = {
           "ocp-apim-subscription-key": "54c3966e447e4f929aaa937ee4ace241",
-          "access-token": "_149fnutZn15nazEs2Xd6A",
-          "client": "6ErPlTT-I-6ARwsZDuzpQw",
+          "access-token": "nh4cM9q58XMwFoBRh932Vw",
+          "client": "JD8k6OYxGbHZC75lILwSig",
           "uid": "olc_andre.bejo@gmail.com"
         };
         
         const response = axios.get(apiURL, { headers })
           .then(response => {
-            // Aqui você pode acessar os headers da resposta
-            console.log('Headers da resposta:', response.headers);
+            // // Aqui você pode acessar os headers da resposta
+            // console.log('Headers da resposta:', response.headers);
             // E também os dados da resposta
             console.log('Resultado:', response.data);
-            
             
           })
           .catch(error => {
@@ -42,11 +41,6 @@ export function SelfService( {navigation} ) {
     }, []);
 
   
-    
-
-
-
-
     //Criação da função "Search" em FlatList
     useEffect(()=>{
         if(searchText === '') {

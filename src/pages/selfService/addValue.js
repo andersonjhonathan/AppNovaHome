@@ -2,15 +2,21 @@ import { View, Text, StyleSheet, TouchableOpacity, TextInput} from 'react-native
 import { useFonts, Montserrat_400Regular } from '@expo-google-fonts/montserrat'
 import CurrencyInput from 'react-native-currency-input'
 import { AntDesign, Ionicons } from '@expo/vector-icons'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export function AddValue( {navigation} ){
 
+    const [value, setValue] = useState(0)
+
     function openPayment() {
+        getValue()
         navigation.navigate('payment')
     }
 
-    const [value, setValue] = useState(0)
+    async function getValue(){
+        await AsyncStorage.setItem("@value", value.toString())
+    }
 
     function BtnAddValue1(){
         setValue(15.90)
