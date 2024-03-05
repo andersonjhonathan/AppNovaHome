@@ -16,6 +16,11 @@ export function UserLav ( {navigation} ){
         }
     
     const[hideValor, setHideValor] = useState(true)
+    const[saldo, setSaldo] = useState(0)
+
+    async function getValue(){
+        await AsyncStorage.setItem("@value", saldo.toString())
+    }
 
     const [fontsLoaded] = useFonts({
         Montserrat_400Regular,

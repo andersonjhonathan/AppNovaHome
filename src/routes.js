@@ -15,6 +15,8 @@ import { AddValue } from './pages/selfService/addValue'
 import { Text } from 'react-native'
 import { Payment } from './pages/selfService/payment'
 import { PaymentPix } from './pages/selfService/paymentPix'
+import { Success } from './pages/selfService/success'
+import { AddCard } from './pages/selfService/addCard'
 
 const Nav = createStackNavigator();
 
@@ -212,6 +214,36 @@ export function Routes() {
       <Nav.Screen
         name="paymentPix"
         component={PaymentPix}
+        options={{
+          headerShown: true,
+          title: '',
+          headerTitle: (props) =>
+            <Text style={{ marginLeft: 105, color: '#FFFFFF', fontSize: 16, fontWeight: 'bold' }}>Recarga</Text>,
+          headerStyle: {
+            backgroundColor: '#01B1EC'
+          },
+          headerTintColor: '#FFFFFF',
+        }}
+      />
+
+      <Nav.Screen
+        name="success"
+        component={Success}
+        options={{
+          headerShown: true,
+          title: '',
+          headerTitle: (props) =>
+            <Text style={{ marginLeft: 105, color: '#FFFFFF', fontSize: 16, fontWeight: 'bold' }}>Recarga</Text>,
+          headerStyle: {
+            backgroundColor: '#01B1EC'
+          },
+          headerTintColor: '#FFFFFF',
+        }}
+      />
+
+      <Nav.Screen
+        name="addCard"
+        component={AddCard}
         options={{
           headerShown: true,
           title: '',

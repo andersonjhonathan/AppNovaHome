@@ -9,6 +9,10 @@ export function Payment({ navigation }) {
         navigation.navigate('paymentPix')
     }
 
+    function openAddCard() {
+        navigation.navigate('addCard')
+    }
+
     const [hideValor, setHideValor] = useState(true)
     const [favoritar, setFavoritar] = useState(true)
     const [favoritar1, setFavoritar1] = useState(true)
@@ -108,23 +112,16 @@ export function Payment({ navigation }) {
                 </View>
             </View>
 
-            <View style={styles.card}>
-                <Ionicons name='card' color='#a7a7a7' size={33} />
-                <View style={styles.infoCard}>
-                    <Text style={styles.titleInfoCard}>Adicionar Cartão</Text>
-                </View>
-                <View style={styles.conteinerIcones}>
-                    <TouchableOpacity>
-                        <Ionicons name='add-circle' color='#a7a7a7' size={30} style={styles.soloIcon} />
-                    </TouchableOpacity>
-                </View>
-            </View>
+            <TouchableOpacity style={styles.btnAddCard} onPress={openAddCard}>
+                <Ionicons name='card' color='#a7a7a7' size={33}></Ionicons>
+                <Text style={styles.titleInfoCard}>  Adicionar Cartão</Text>
+                <Ionicons name='add-circle' color='#a7a7a7' size={30} style={styles.soloIcon}></Ionicons>
+            </TouchableOpacity>
 
-            <View style={styles.card}>
+            <TouchableOpacity style={styles.btnAddCard} onPress={openPaymentPix}>
                 <Image
                     source={require('../../assets/icons8-foto-33.png')}
                 />
-
                 <View style={styles.infoCard}>
                     <Text style={styles.titleInfoCard}>Pix</Text>
                     <Text style={styles.subTitleInfoCard}>Pagamento online</Text>
@@ -132,13 +129,9 @@ export function Payment({ navigation }) {
                 <View style={styles.novo}>
                     <Text style={styles.txtNovo}>NOVO</Text>
                 </View>
-                <TouchableOpacity onPress={openPaymentPix}>
-                    <View style={styles.conteinerIconePix}>
-                        <Ionicons name='chevron-forward' color='#a7a7a7' size={30} style={{ marginLeft: 10 }} />
-                    </View>
-                </TouchableOpacity>
+                <Ionicons name='chevron-forward' color='#a7a7a7' size={30} style={{ marginLeft: 10 }} />
+            </TouchableOpacity>
 
-            </View>
         </View>
     )
 
@@ -164,7 +157,7 @@ const styles = StyleSheet.create({
         borderRadius: 5,
     },
     soloIcon: {
-        marginLeft: 60,
+        marginLeft: 105,
     },
     icones: {
         marginRight: 4,
@@ -262,5 +255,22 @@ const styles = StyleSheet.create({
         color: '#002F6E',
         fontWeight: '500',
         marginBottom: 13,
-    }
+    },
+    btnAddCard: {
+        flexDirection: 'row',
+        paddingLeft: 15,
+        paddingRight: 59,
+        right: 5,
+        height: 80,
+        backgroundColor: '#FFF',
+        borderWidth: 1,
+        borderColor: '#d3d3d3',
+        borderRadius: 8,
+        alignItems: 'center',
+        marginBottom: 15,
+        marginTop: 2,
+        marginRight: 15,
+        marginLeft: 25,
+        elevation: 1,
+    },
 })
