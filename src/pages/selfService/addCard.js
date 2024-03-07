@@ -1,11 +1,17 @@
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image } from 'react-native'
 import { useFonts, Montserrat_400Regular } from '@expo-google-fonts/montserrat'
+import { FloatingLabelInput } from 'react-native-floating-label-input'
 import { AntDesign, Ionicons } from '@expo/vector-icons'
 import React, { useState } from 'react'
 
 export function AddCard() {
 
     const [hideValor, setHideValor] = useState(true)
+
+    const [numberCard, setNumberCard] = useState('')
+    const [nameCard, setNameCard] = useState('')
+    const [validCard, setValidCard] = useState('')
+    const [cvv, setCvv] = useState('')
 
     const [fontsLoaded] = useFonts({
         Montserrat_400Regular,
@@ -48,11 +54,55 @@ export function AddCard() {
                 </View>
             </View>
             <View style={styles.body}>
-                <Text>Cadastre aqui seu cartão</Text>
-                <Text>Escreva as informações do mesmo modo que elas {'\n'}estão cadastradas no cartão.</Text>
+                <Text style={styles.txtAddCard}>Cadastre aqui seu cartão</Text>
+                <Text style={styles.txtsubText}>Escreva as informações do mesmo modo que elas {'\n'}estão cadastradas no cartão.</Text>
 
-                <TouchableOpacity>
-                    <Text>Cadastrar cartão</Text>
+                <Text style={styles.txtNumberCard}>Número do cartão</Text>
+                <TextInput
+                    style={styles.inputNumberCard}
+                    onChangeText={setNumberCard}
+                    value={numberCard}
+                    placeholder="0000 0000 0000 0000"
+                    keyboardType="numeric"
+                />
+                <Image
+                    source={require("../../assets/logo_bandeiraCard.png")}
+                    style={styles.logoBandeiraCard}
+                />
+
+                <Text style={styles.txtNameCard}>Nome do cartão</Text>
+                <TextInput
+                    style={styles.inputNameCard}
+                    onChangeText={setNameCard}
+                    value={nameCard}
+                    placeholder="Nome do titular"
+                />
+
+                <View style={styles.inputsRow}>
+                    <Text style={styles.txtValidAndCvv}>Validade</Text>
+                    <Text>Código de segurança</Text>
+                </View>
+
+                <View style={styles.inputsRow}>
+                    <TextInput
+                        style={styles.inputValidCard}
+                        onChangeText={setValidCard}
+                        value={validCard}
+                        placeholder="00/00"
+                        keyboardType="numeric"
+                    />
+
+                    <TextInput
+                        style={styles.inputCvv}
+                        onChangeText={setCvv}
+                        value={cvv}
+                        placeholder="CVV"
+                        keyboardType="numeric"
+                    />
+                </View>
+
+                <TouchableOpacity style={styles.btnAddCard}>
+                    <Text style={styles.txtCard}>Cadastrar cartão</Text>
                 </TouchableOpacity>
 
             </View>
@@ -135,4 +185,103 @@ const styles = StyleSheet.create({
         borderColor: '#FFF',
         elevation: 4,
     },
+    txtAddCard: {
+        marginTop: 20,
+        marginLeft: 20,
+        marginBottom: 7,
+        fontSize: 20,
+        color: '#002F6E'
+    },
+    txtsubText: {
+        marginLeft: 20,
+        fontSize: 14,
+        color: '#495057'
+    },
+    inputNumberCard: {
+        backgroundColor: '#FFF',
+        borderWidth: 1.3,
+        borderColor: '#BEC4CC',
+        marginTop: 2,
+        marginBottom: 3,
+        marginLeft: 20,
+        marginRight: 20,
+        padding: 13,
+        borderRadius: 8,
+    },
+    inputNameCard: {
+        backgroundColor: '#FFF',
+        borderWidth: 1.3,
+        borderColor: '#BEC4CC',
+        marginTop: 2,
+        marginBottom: 10,
+        marginLeft: 20,
+        marginRight: 20,
+        padding: 13,
+        borderRadius: 8,
+    },
+    inputValidCard: {
+        backgroundColor: '#FFF',
+        borderWidth: 1.3,
+        borderColor: '#BEC4CC',
+        marginTop: 5,
+        marginBottom: 10,
+        marginLeft: 20,
+        marginRight: 1,
+        paddingTop: 13,
+        paddingBottom: 13,
+        paddingLeft: 13,
+        paddingRight: 110,
+        borderRadius: 8,
+    },
+    inputCvv: {
+        backgroundColor: '#FFF',
+        borderWidth: 1.3,
+        borderColor: '#BEC4CC',
+        marginTop: 5,
+        marginBottom: 10,
+        marginLeft: 18,
+        marginRight: 10,
+        paddingTop: 13,
+        paddingBottom: 13,
+        paddingLeft: 13,
+        paddingRight: 126,
+        borderRadius: 8,
+    },
+    btnAddCard: {
+        margin: 20,
+        backgroundColor: '#2BB673',
+        padding: 10,
+        borderRadius: 7,
+        alignItems: 'center',
+    },
+    txtCard: {
+        color: '#FFF',
+        fontWeight: '500'
+    },
+    inputsRow: {
+        flexDirection: 'row',
+    },
+    txtNumberCard: {
+        marginTop: 10,
+        marginBottom: 2,
+        marginLeft: 20,
+        color: '#343A40'
+    },
+    txtNameCard: {
+        marginTop: 10,
+        marginBottom: 2,
+        marginLeft: 20,
+        color: '#343A40'
+    },
+    txtValidAndCvv: {
+        marginLeft: 20,
+        marginRight: 128,
+    },
+    logoBandeiraCard:{
+        position: 'absolute',
+        width: 30,
+        height: 25,
+        marginTop: 138,
+        marginLeft: 325,
+    }
 })
