@@ -3,6 +3,12 @@ import React, { useState, useRef } from 'react'
 
 export function ModalCodMaq({ navigation, handleClose }) {
 
+    function openConfirmMaq() {
+        navigation.navigate('confirmMaq')
+    }
+
+    const [btnAtivMaq, setBtnAtivMaq] = useState(true)
+
     const pin1Ref = useRef(null)
     const pin2Ref = useRef(null)
     const pin3Ref = useRef(null)
@@ -13,9 +19,7 @@ export function ModalCodMaq({ navigation, handleClose }) {
     const [pin3, setPin3] = useState("")
     const [pin4, setPin4] = useState("")
 
-    function openConfirmMaq() {
-        navigation.navigate('confirmMaq')
-    }
+
 
     return (
 
@@ -72,13 +76,22 @@ export function ModalCodMaq({ navigation, handleClose }) {
                         maxLength={1}
                         onChange={(pin4) => {
                             setPin4(pin4)
+                            setBtnAtivMaq()
                         }}
                     />
                 </View>
 
-                <TouchableOpacity style={styles.btnActivateMaq} onPress={openConfirmMaq}>
-                    <Text style={styles.txtActivateMaq}>Ativar máquina</Text>
-                </TouchableOpacity>
+                {
+                    btnAtivMaq ? (
+                        <TouchableOpacity style={styles.btnActivateMaq} disabled>
+                            <Text style={styles.txtActivateMaq}>Ativar máquina</Text>
+                        </TouchableOpacity>
+                    ) : (
+                        <TouchableOpacity style={styles.btnActivateMaq2} onPress={openConfirmMaq}>
+                            <Text style={styles.txtActivateMaq}>Ativar máquina</Text>
+                        </TouchableOpacity>
+                    )
+                }
                 <TouchableOpacity style={styles.btnReturnCam} onPress={handleClose}>
                     <Text style={styles.textButton}>Ativar com a câmera</Text>
                 </TouchableOpacity>
@@ -145,6 +158,14 @@ const styles = StyleSheet.create({
     },
     btnActivateMaq: {
         backgroundColor: '#868E96',
+        width: '85%',
+        height: 45,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 5,
+    },
+    btnActivateMaq2: {
+        backgroundColor: '#2BB673',
         width: '85%',
         height: 45,
         alignItems: 'center',

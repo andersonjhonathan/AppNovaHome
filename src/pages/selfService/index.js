@@ -3,9 +3,7 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import { FlatList, ScrollView } from 'react-native-gesture-handler'
 import { SafeAreaView } from 'react-native-safe-area-context';
-import api from '../../services/api';
 import axios from 'axios';
-// import InfoClient from './infoClient';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
@@ -13,7 +11,28 @@ export function SelfService( {navigation} ) {
 
     const [searchText, setSearchText] = useState('')
     const [list, setList] = useState(lojas)
-    
+
+    const [client, setClient] = useState('')
+    const [token, setToken] = useState('')
+
+    async function getDataClient(){
+        const response = await AsyncStorage.getItem("@clients")
+        if(response){
+          setClient(response)
+        }
+    }
+
+    async function getDataToken(){
+        const response = await AsyncStorage.getItem("@tokens")
+        if(response){
+          setToken(response)
+        }
+    }
+
+    useEffect(() => {
+        getDataClient()
+        getDataToken()
+    }, [])
 
 
     useEffect(() => {
@@ -21,8 +40,8 @@ export function SelfService( {navigation} ) {
 
         const headers = {
           "ocp-apim-subscription-key": "54c3966e447e4f929aaa937ee4ace241",
-          "access-token": "nh4cM9q58XMwFoBRh932Vw",
-          "client": "JD8k6OYxGbHZC75lILwSig",
+          "access-token": token,
+          "client": client,
           "uid": "olc_andre.bejo@gmail.com"
         };
         
@@ -69,13 +88,6 @@ export function SelfService( {navigation} ) {
         </TouchableOpacity>
     );
             
-            
-                
-                    
-                       
-                
-
-
     function openUserLav(){
         navigation.navigate('userLav')
         }

@@ -60,22 +60,32 @@ export function Login({ navigation }) {
         password: password,
       })
         .then(result => {
-          async function getName(){
+          async function getName() {
             await AsyncStorage.setItem("@names", nome)
-        }
-          async function getPhone(){
+          }
+          async function getPhone() {
             await AsyncStorage.setItem("@phones", phone)
-        }
-          async function getEmail(){
+          }
+          async function getEmail() {
             await AsyncStorage.setItem("@emails", email)
-        }
+          }
+          async function getClient() {
+            await AsyncStorage.setItem("@clients", client)
+          }
+          async function getAccessToken() {
+            await AsyncStorage.setItem("@tokens", accessToken)
+          }
 
-        var nome = result.data.data.first_name
-        var phone = result.data.data.phone
-        
+          var nome = result.data.data.first_name
+          var phone = result.data.data.phone
+          var client = result.headers.client
+          var accessToken = result.headers['access-token']
+
           getName()
           getPhone()
           getEmail()
+          getClient()
+          getAccessToken()
           // console.log(result.data.data.phone)
           if (result.status == 200) {
             navigation.navigate('mainScreen')
@@ -171,7 +181,7 @@ export function Login({ navigation }) {
 
 
       <TouchableOpacity style={styles.buttonEnter} onPress={handleLogin}>
-      <Text style={styles.buttonText2}>Entrar</Text>
+        <Text style={styles.buttonText2}>Entrar</Text>
         {!loading ? (
           <Ionicons style={styles.IconLoading} size={24} color="#FFF" name="log-in-outline" />
         ) : (
