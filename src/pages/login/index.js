@@ -86,7 +86,8 @@ export function Login({ navigation }) {
           getEmail()
           getClient()
           getAccessToken()
-          // console.log(result.data.data.phone)
+          console.log(client)
+          console.log(accessToken)
           if (result.status == 200) {
             navigation.navigate('mainScreen')
           }

@@ -4,6 +4,7 @@ import React, { useState, useRef } from 'react'
 export function ModalCodMaq({ navigation, handleClose }) {
 
     function openConfirmMaq() {
+        
         navigation.navigate('confirmMaq')
     }
 

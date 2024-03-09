@@ -36,6 +36,9 @@ export function SelfService( {navigation} ) {
 
 
     useEffect(() => {
+        getDataClient()
+        getDataToken()
+
         const apiURL = "https://hml-washandgo.azure-api.net//omo-ole/v1/loja";
 
         const headers = {
@@ -47,10 +50,11 @@ export function SelfService( {navigation} ) {
         
         const response = axios.get(apiURL, { headers })
           .then(response => {
+
             // // Aqui você pode acessar os headers da resposta
-            // console.log('Headers da resposta:', response.headers);
             // E também os dados da resposta
-            console.log('Resultado:', response.data);
+            console.log(response.data.dados);
+            
             
           })
           .catch(error => {
@@ -63,10 +67,10 @@ export function SelfService( {navigation} ) {
     //Criação da função "Search" em FlatList
     useEffect(()=>{
         if(searchText === '') {
-            setList(lojas);
+            setList(list);
         } else {
             setList(
-                lojas.filter(item => {
+                list.filter(item => {
                     if(item.title.indexOf(searchText) > -1) {
                         return true
                     } else { 
@@ -81,7 +85,7 @@ export function SelfService( {navigation} ) {
         <TouchableOpacity onPress={openUserLav}>
             <View style={styles.item} >
             <Image source={require("../../assets/maq_icon.png")} style={styles.iconMaq} />
-                <Text style={styles.subtitle} > a </Text>
+                <Text style={styles.subtitle} > Nome da Loja </Text>
                 <Text style={styles.title}>{title}</Text>
                 <Text style={styles.price}>R$ 0,00 </Text>
             </View>
@@ -195,7 +199,7 @@ const styles = StyleSheet.create({
     title: {
         color: '#002F6E',
         fontWeight: 'bold',
-        marginLeft: -130,
+        marginLeft: -116,
         fontSize: 16,
     },
     subtitle: {

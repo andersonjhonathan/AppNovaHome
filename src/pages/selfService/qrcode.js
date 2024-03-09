@@ -75,7 +75,7 @@ export function QrCode( {navigation} ){
            
             <Modal visible={modalVisible} animationType='fade' transparent={true}>
               <ModalCodMaq 
-              handleClose={ () => setModalVisible(false) } />
+              handleClose={ () => setModalVisible(false)}/>
             </Modal>
         </View>
     )

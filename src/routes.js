@@ -183,16 +183,14 @@ export function Routes() {
         name="confirmMaq"
         component={ConfirmMaq}
         options={{
-          headerShown: false,
+          headerShown: true,
           title: '',
-          headerTitle: (props) => <Image
-            style={{ width: 68, height: 48, marginLeft: 92 }}
-            source={require('./assets/logo_icon2.png')}
-          />,
+          headerTitle: (props) =>
+            <Text style={{ marginLeft: 60, color: '#FFFFFF', fontSize: 16, fontWeight: 'bold' }}>Revisão do pedido</Text>,
           headerStyle: {
-            backgroundColor: '#F5F8FF'
+            backgroundColor: '#01B1EC'
           },
-          headerTintColor: '#343A40',
+          headerTintColor: '#FFFFFF',
         }}
       />
 
