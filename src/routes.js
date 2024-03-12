@@ -17,6 +17,7 @@ import { Payment } from './pages/selfService/payment'
 import { PaymentPix } from './pages/selfService/paymentPix'
 import { Success } from './pages/selfService/success'
 import { AddCard } from './pages/selfService/addCard'
+import { EditProfile } from './pages/main/editProfile'
 
 const Nav = createStackNavigator();
 
@@ -251,6 +252,23 @@ export function Routes() {
             backgroundColor: '#01B1EC'
           },
           headerTintColor: '#FFFFFF',
+        }}
+      />
+
+      <Nav.Screen
+        name="editProfile"
+        component={EditProfile}
+        options={{
+          headerShown: true,
+          title: '',
+          headerTitle: (props) => <Image
+            style={{ width: 60, height: 40, marginLeft: 92 }}
+            source={require('./assets/logo_icon.png')}
+          />,
+          headerStyle: {
+            backgroundColor: '#0046FE'
+          },
+          headerTintColor: '#FFF'
         }}
       />
 

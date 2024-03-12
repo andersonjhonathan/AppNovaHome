@@ -75,19 +75,27 @@ export function Login({ navigation }) {
           async function getAccessToken() {
             await AsyncStorage.setItem("@tokens", accessToken)
           }
+          async function getCpf() {
+            await AsyncStorage.setItem("@cpfs", cpf)
+          }
 
           var nome = result.data.data.first_name
           var phone = result.data.data.phone
           var client = result.headers.client
           var accessToken = result.headers['access-token']
-
+          var cpf = result.data.data.cpf.numero
+          
+          getCpf()
           getName()
           getPhone()
           getEmail()
           getClient()
           getAccessToken()
+
           console.log(client)
           console.log(accessToken)
+
+          console.log(cpf)
           if (result.status == 200) {
             navigation.navigate('mainScreen')
           }

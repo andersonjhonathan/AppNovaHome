@@ -4,7 +4,11 @@ import { useFonts, Montserrat_400Regular, Montserrat_500Medium } from '@expo-goo
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState, useEffect } from 'react'
 
-export function Profile() {
+export function Profile({ navigation }) {
+
+   function openEditProfile() {
+      navigation.navigate('editProfile')
+   }
 
    const [name, setName] = useState('')
    const [phone, setPhone] = useState('')
@@ -73,7 +77,7 @@ export function Profile() {
             <Text style={styles.txtEmail}>{email}</Text>
          </View>
 
-         <TouchableOpacity style={styles.btnEdit}>
+         <TouchableOpacity style={styles.btnEdit} onPress={openEditProfile}>
             <Ionicons style={{ marginRight: 7 }} size={22} color="#FFFFFF" name="person-add-outline" />
             <Text style={styles.txtEdit}>Editar informações</Text>
          </TouchableOpacity>
