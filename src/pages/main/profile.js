@@ -10,6 +10,10 @@ export function Profile({ navigation }) {
       navigation.navigate('editProfile')
    }
 
+   function openEditPassword() {
+      navigation.navigate('editPassword')
+   }
+
    const [name, setName] = useState('')
    const [phone, setPhone] = useState('')
    const [email, setEmail] = useState('')
@@ -82,7 +86,7 @@ export function Profile({ navigation }) {
             <Text style={styles.txtEdit}>Editar informações</Text>
          </TouchableOpacity>
 
-         <TouchableOpacity style={styles.btnRedPassword}>
+         <TouchableOpacity style={styles.btnRedPassword} onPress={openEditPassword}>
             <Ionicons style={{ marginRight: 7 }} size={22} color="#0046FE" name="lock-closed-outline" />
             <Text style={styles.txtRedPassword}>Redefinir senha</Text>
          </TouchableOpacity>

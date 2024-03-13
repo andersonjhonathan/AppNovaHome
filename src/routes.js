@@ -18,6 +18,8 @@ import { PaymentPix } from './pages/selfService/paymentPix'
 import { Success } from './pages/selfService/success'
 import { AddCard } from './pages/selfService/addCard'
 import { EditProfile } from './pages/main/editProfile'
+import { EditPassword } from './pages/main/editPassword'
+import { NewPassword } from './pages/main/newPassword'
 
 const Nav = createStackNavigator();
 
@@ -258,6 +260,40 @@ export function Routes() {
       <Nav.Screen
         name="editProfile"
         component={EditProfile}
+        options={{
+          headerShown: true,
+          title: '',
+          headerTitle: (props) => <Image
+            style={{ width: 60, height: 40, marginLeft: 92 }}
+            source={require('./assets/logo_icon.png')}
+          />,
+          headerStyle: {
+            backgroundColor: '#0046FE'
+          },
+          headerTintColor: '#FFF'
+        }}
+      />
+
+      <Nav.Screen
+        name="editPassword"
+        component={EditPassword}
+        options={{
+          headerShown: true,
+          title: '',
+          headerTitle: (props) => <Image
+            style={{ width: 60, height: 40, marginLeft: 92 }}
+            source={require('./assets/logo_icon.png')}
+          />,
+          headerStyle: {
+            backgroundColor: '#0046FE'
+          },
+          headerTintColor: '#FFF'
+        }}
+      />
+
+      <Nav.Screen
+        name="newPassword"
+        component={NewPassword}
         options={{
           headerShown: true,
           title: '',
