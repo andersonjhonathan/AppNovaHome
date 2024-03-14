@@ -95,7 +95,6 @@ export function Login({ navigation }) {
           console.log(client)
           console.log(accessToken)
 
-          console.log(cpf)
           if (result.status == 200) {
             navigation.navigate('mainScreen')
           }
