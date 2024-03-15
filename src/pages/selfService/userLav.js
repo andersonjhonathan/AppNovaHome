@@ -320,8 +320,7 @@ const styles = StyleSheet.create({
         paddingLeft: 100,
     },
     scrollView:{
-        horizontal: 20,
-        
+        horizontal: 20,        
     },
     footer:{
         backgroundColor: '#2BB673',
