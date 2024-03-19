@@ -75,11 +75,11 @@ export function MyDrawer() {
           headerShown: true,
           title: '',
           headerTitle: (props) =>
-            <Text style={{ marginLeft: 105, color: '#FFFFFF', fontSize: 16, fontWeight: 'bold' }}>Extrato</Text>,
+            <Text style={{ marginLeft: 5, color: '#01B1EC', fontSize: 16, fontWeight: 'bold' }}>Extrato</Text>,
           headerStyle: {
-            backgroundColor: '#01B1EC'
+            backgroundColor: '#FFFFFF'
           },
-          headerTintColor: '#FFFFFF',
+          headerTintColor: '#01B1EC',
         }}
       />
       <Drawer.Screen name="Ajuda" component={SelfService}

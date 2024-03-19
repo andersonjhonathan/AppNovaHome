@@ -1,15 +1,14 @@
 import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image } from 'react-native'
-import { useFonts, Montserrat_400Regular } from '@expo-google-fonts/montserrat'
+import { useFonts, Montserrat_400Regular, Montserrat_500Medium } from '@expo-google-fonts/montserrat'
 import { AntDesign, Ionicons } from '@expo/vector-icons'
 import React, { useState, useEffect } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export function Extract() {
 
-    const [hideValor, setHideValor] = useState(true)
-
     const [fontsLoaded] = useFonts({
         Montserrat_400Regular,
+        Montserrat_500Medium
     })
 
     if (!fontsLoaded) {
@@ -17,118 +16,73 @@ export function Extract() {
     }
 
     return (
-        <View>
+        <View style={styles.container}>
             <View style={styles.modal}>
+                <Text style={styles.txtLocal}>Copan | SP - Centro</Text>
                 <View style={styles.header}>
-                    <View style={styles.texts}>
-                        <Text style={styles.txtSaldo}>Saldo atual</Text>
-
-                        <View style={styles.txtBtnSaldo}>
-                            {
-                                hideValor ? (
-                                    <Text style={styles.valorSaldo}>R$ 100,00</Text>
-                                ) : (
-                                    <Text style={styles.valorSaldo}>R$ *****</Text>
-                                )
-                            }
-                            <TouchableOpacity style={styles.btnIcon} onPress={() => setHideValor(!hideValor)}>
-                                {
-                                    hideValor ?
-                                        <Ionicons name='eye' color='#FFF' size={24} />
-                                        :
-                                        <Ionicons name='eye-off-outline' color='#FFF' size={24} />
-                                }
-                            </TouchableOpacity>
-                            <Text style={styles.txtLocal}>
-                                Porto Alegre | Zaffari {'\n'}Teresópolis
-                            </Text>
-                        </View>
-
-                    </View>
-
+                    <Image
+                        source={require("../../assets/icon_searchNew.png")}
+                        style={styles.icon_searchNew}
+                    />
+                    <Text style={styles.txtInf}>Você tem:{'\n'}<Text style={styles.txtValor}>R$ 127,00</Text></Text>
+                    <Ionicons name='reload-outline' size={25} style={styles.iconLoad} />
                 </View>
             </View>
-
-            <TouchableOpacity style={styles.btnSearch}>
-                <Image source={require("../../assets/search_icon.png")} style={styles.iconSearch} />
-                <Text style={styles.txtBtnSearch}>Digite a peça desejada</Text>
-            </TouchableOpacity>
-
+            <Text style={styles.txtCons}>Total consumido:     <Text style={styles.txtSaldoCons}>R$ 0,00</Text></Text>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    modal: {
-        backgroundColor: '#01B1EC',
-        borderBottomRightRadius: 18,
-        borderBottomLeftRadius: 18,
+    container: {
+        backgroundColor: '#FFFFFF',
+        alignItems: 'center'
     },
-    header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginLeft: 20,
-        marginRight: 20,
-        marginBottom: 20,
-        marginTop: 5,
-        width: '90%',
-        borderTopWidth: 1,
-        borderColor: '#DEE2E6'
-    },
-    texts: {
-        marginTop: 20,
-    },
-    btnSaldo: {
-        marginTop: 25,
-        color: '#FFFFFF',
-        borderRadius: 9,
-        borderWidth: 1,
-        borderColor: '#FFFFFF',
-        alignItems: 'center',
-        justifyContent: 'center',
-        width: 150,
-        height: 38,
-    },
-    txtSaldo: {
-        color: '#FFFFFF',
-        fontSize: 14,
-    },
-    valorSaldo: {
-        color: '#FFFFFF',
-        fontSize: 20,
-        fontFamily: 'Montserrat_400Regular'
-    },
-    btnIcon: {
-        paddingLeft: 5,
-        paddingTop: 1,
-    },
-    txtBtnSaldo: {
-        flexDirection: 'row',
+    icon_searchNew: {
+        width: 85,
+        height: 85,
+        marginLeft: 25,
+        marginTop: 13,
     },
     txtLocal: {
-        color: '#FFFFFF',
+        color: '#01B1EC',
         fontWeight: '500',
+        marginLeft: 8,
+        marginTop: 15,
+    },
+    txtInf: {
+        color: '#01B1EC',
+        fontSize: 10,
+        textAlign: 'right',
+        position: 'absolute',
+        marginLeft: 150,
+    },
+    txtValor: {
         fontSize: 16,
-        marginLeft: 75,
-        marginTop: -15,
+        fontWeight: '500'
     },
-    btnSearch: {
-        margin: 20,
-        paddingTop: 10,
-        paddingBottom: 10,
-        paddingLeft: 2,
-        paddingRight: 10,
-        borderWidth: 0.8,
-        borderRadius: 6,
-        flexDirection: 'row'
+    header:{
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
     },
-    txtBtnSearch: {
-        color: '#717D96',
-        marginLeft: 10,
+    iconLoad:{
+        position: 'absolute',
+        margin: 225,
+        color: '#01B1EC'
     },
-    iconSearch: {
-        width: 20,
-        height: 20,
-        marginLeft: 13,
+    txtCons:{
+        marginTop: 545,
+        color: '#01B1EC',
+        fontSize: 18,
+        paddingLeft: 85,
+        paddingRight: 85,
+        paddingTop: 12,
+        paddingBottom: 12,
+        backgroundColor: '#DCDCDC'
     },
+    txtSaldoCons:{
+        fontWeight: '500',
+        color: '#E93F66'
+    }
 })

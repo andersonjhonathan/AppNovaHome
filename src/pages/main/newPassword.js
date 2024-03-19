@@ -1,4 +1,4 @@
-import { Text, View, StyleSheet, TouchableOpacity, ToastAndroid, TextInput } from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity, TextInput } from 'react-native'
 import { Ionicons } from '@expo/vector-icons'
 import { useFonts, Montserrat_400Regular, Montserrat_500Medium } from '@expo-google-fonts/montserrat'
 import AsyncStorage from '@react-native-async-storage/async-storage';
