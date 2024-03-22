@@ -25,6 +25,8 @@
       "package": "com.iterative.OmoLavanderia"
     },
     "web": {
+      "output": "server",
+      "bundler": "metro",
       "favicon": "./assets/favicon.png"
     }
   }
