@@ -1,13 +1,14 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { Text } from 'react-native'
 import { UserLav } from './pages/selfService/userLav';
-import { Image } from 'react-native'
 import { SelfService } from './pages/selfService'
 import { AddCard } from './pages/selfService/addCard'
 import { AddValue } from './pages/selfService/addValue'
 import { Extract } from './pages/selfService/extract'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useState, useEffect } from 'react'
+import { MyTopTabs } from './topTabNavigator';
+import { AntDesign, Ionicons } from '@expo/vector-icons'
+import { View, Text, StyleSheet, TouchableOpacity, TextInput, Image } from 'react-native'
 
 const Drawer = createDrawerNavigator();
 
@@ -69,15 +70,29 @@ export function MyDrawer() {
 
       />
 
-      <Drawer.Screen name="Extrato de consumo" component={Extract}
+      <Drawer.Screen name="Extrato de consumo" component={MyTopTabs}
         options={{
           drawerLabel: 'Extrato de consumo',
           headerShown: true,
           title: '',
           headerTitle: (props) =>
-            <Text style={{ marginLeft: 5, color: '#01B1EC', fontSize: 16, fontWeight: 'bold' }}>Extrato</Text>,
+            <View style={styles.container}>
+              <View style={styles.modal}>
+                <Text style={styles.txtLocal}>Copan | SP - Centro</Text>
+                <View style={styles.header}>
+                  <Image
+                    source={require("../../AppNovaHome/src/assets/icon_searchNew.png")}
+                    style={styles.icon_searchNew}
+                  />
+                  <Text style={styles.txtInf}>Você tem:{'\n'}<Text style={styles.txtValor}>R$ 127,00</Text></Text>
+                  <Ionicons name='reload-outline' size={25} style={styles.iconLoad} />
+                </View>
+              </View>
+            </View>
+          ,
           headerStyle: {
-            backgroundColor: '#FFFFFF'
+            backgroundColor: '#FFFFFF',
+            height: 190,
           },
           headerTintColor: '#01B1EC',
         }}
@@ -92,3 +107,44 @@ export function MyDrawer() {
     </Drawer.Navigator>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#FFFFFF',
+    alignItems: 'center',
+    marginLeft: 65,
+  },
+  icon_searchNew: {
+    width: 80,
+    height: 80,
+    marginLeft: 25,
+    marginTop: 13,
+  },
+  txtLocal: {
+    color: '#01B1EC',
+    fontWeight: '500',
+    marginLeft: 8,
+    marginTop: 15,
+  },
+  txtInf: {
+    color: '#01B1EC',
+    fontSize: 10,
+    textAlign: 'right',
+    position: 'absolute',
+    marginLeft: 150,
+  },
+  txtValor: {
+    fontSize: 16,
+    fontWeight: '500'
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  iconLoad: {
+    position: 'absolute',
+    margin: 225,
+    color: '#01B1EC'
+  },
+})

@@ -20,6 +20,7 @@ import { AddCard } from './pages/selfService/addCard'
 import { EditProfile } from './pages/main/editProfile'
 import { EditPassword } from './pages/main/editPassword'
 import { NewPassword } from './pages/main/newPassword'
+import { MyTopTabs } from './topTabNavigator'
 
 const Nav = createStackNavigator();
 

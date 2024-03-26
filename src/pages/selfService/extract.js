@@ -4,6 +4,7 @@ import { AntDesign, Ionicons } from '@expo/vector-icons'
 import React, { useState, useEffect } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+
 export function Extract() {
 
     const [fontsLoaded] = useFonts({
@@ -17,7 +18,7 @@ export function Extract() {
 
     return (
         <View style={styles.container}>
-            <View style={styles.modal}>
+            {/* <View style={styles.modal}>
                 <Text style={styles.txtLocal}>Copan | SP - Centro</Text>
                 <View style={styles.header}>
                     <Image
@@ -27,7 +28,10 @@ export function Extract() {
                     <Text style={styles.txtInf}>Você tem:{'\n'}<Text style={styles.txtValor}>R$ 127,00</Text></Text>
                     <Ionicons name='reload-outline' size={25} style={styles.iconLoad} />
                 </View>
-            </View>
+                <View>
+                    
+                </View>
+            </View> */}
             <Text style={styles.txtCons}>Total consumido:     <Text style={styles.txtSaldoCons}>R$ 0,00</Text></Text>
         </View>
     )
@@ -72,7 +76,7 @@ const styles = StyleSheet.create({
         color: '#01B1EC'
     },
     txtCons:{
-        marginTop: 545,
+        marginTop: 45,
         color: '#01B1EC',
         fontSize: 18,
         paddingLeft: 85,
