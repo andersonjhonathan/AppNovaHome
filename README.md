@@ -48,7 +48,7 @@ IDE utilizada para leitura e digitação do código da aplicação.
 1. Clone o repositório: 
 
 ```bash
-git clone https://IterativeProjetos@dev.azure.com/IterativeProjetos/WashGo/_git/Site_APP
+git clone https://github.com/andersonjhonathan/AppNovaHome.git
     
 cd Site_APP
 ```
